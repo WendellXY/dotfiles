@@ -1,0 +1,36 @@
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+alias cat=bat
+alias ls=eza
+alias ll="eza -alh"
+alias tree="eza --tree"
+alias vim=nvim
+
+nvim() {
+    command nvim "$@"
+    # Reset the cursor style on exit
+    echo -ne "\e[0 q"
+}
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+eval "$(zoxide init zsh --cmd cd)"
+
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]
+then
+  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.warp.toml"
+else
+  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
+fi
+
+
+eval "$(starship init zsh)"
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
