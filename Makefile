@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: brew nvim fish zsh starship
+.PHONY: install brew nvim fish zsh starship
 
 install: brew nvim fish zsh starship
 
