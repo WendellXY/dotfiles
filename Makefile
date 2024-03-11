@@ -9,7 +9,7 @@ install: brew nvim fish zsh starship
 
 # MARK: HomeBrew
 brew:
-    $(MAKE) -f brew/Makefile import
+	@brew bundle
 
 # MARK: neovim
 nvim: | ${HOME}/.config/nvim
