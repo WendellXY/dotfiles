@@ -15,34 +15,22 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      { "antosha417/nvim-lsp-file-operations", config = true },
+    },
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
 
-      local ui = require('config.ui')
-      local borders = { border = ui.borders }
-      local lsp = vim.lsp
-      local handlers = {
-        ["textDocument/hover"] = lsp.with(lsp.handlers.hover, borders),
-        ["txtdocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, borders),
-      }
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local capabilities = cmp_nvim_lsp.default_capabilities()
 
-      local servers = {
-        clangd = {},
-        sourcekit = {
-          root_dir = lspconfig.util.root_pattern(
-            '.git',
-            'Package.swift'
-          ),
-        },
-        lspconfig.rust_analyzer.setup {}
-      }
-
-      for server, setup in pairs(servers) do
-        setup.handlers = handlers
-        lspconfig[server].setup(setup)
-      end
+      lspconfig["sourcekit"].setup({
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern('Package.swift'),
+      })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
