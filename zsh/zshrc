@@ -5,6 +5,8 @@ alias ls=eza
 alias ll="eza -alh"
 alias tree="eza --tree"
 alias vim=nvim
+alias python=python3
+alias pip=pip3
 
 nvim() {
     command nvim "$@"
