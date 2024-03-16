@@ -1,0 +1,14 @@
+[shell]
+program = "/opt/homebrew/bin/fish"
+
+[window]
+padding = { x = 8, y = 8 }
+decorations = "Buttonless"
+option_as_alt = "OnlyLeft"
+
+[font]
+normal = { family = "SFMono Nerd Font", style = "Regular" }
+size = 13
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }

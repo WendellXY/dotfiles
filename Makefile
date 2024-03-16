@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nvim fish zsh starship
+.PHONY: install brew nvim fish zsh starship alacritty
 
 install: brew nvim fish zsh starship
 
@@ -38,3 +38,10 @@ starship: | ${HOME}/.config/starship
 
 ${HOME}/.config/starship: ${HOME}/.config
 	ln -s ${BASE_DIR}/starship ${HOME}/.config/starship
+
+# MARK: alacritty
+alacritty: | ${HOME}/.config/alacritty
+	@echo "Alacritty configuration installed"
+
+${HOME}/.config/alacritty: ${HOME}/.config
+	ln -s ${BASE_DIR}/alacritty ${HOME}/.config/alacritty
