@@ -23,6 +23,7 @@ then
 fi
 
 eval "$(zoxide init zsh --cmd cd)"
+eval "$(fzf --zsh)"
 
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]
 then

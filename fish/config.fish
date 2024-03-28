@@ -5,6 +5,9 @@ end
 # Zoxide Configs
 zoxide init fish --cmd cd | source
 
+# Fzf Configs
+fzf --fish | source
+
 # Starship Configs
 function starship_transient_prompt_func
     starship module character
