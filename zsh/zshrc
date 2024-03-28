@@ -24,6 +24,7 @@ fi
 
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
+eval "$(gh copilot alias -- zsh)"
 
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]
 then
