@@ -1,9 +1,9 @@
 source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 alias cat=bat
-alias ls=eza
-alias ll="eza -alh"
-alias tree="eza --tree"
+alias ls="eza --icons"
+alias ll="eza -alh --icons"
+alias tree="eza --tree --icons"
 alias vim=nvim
 alias ..="cd .."
 
