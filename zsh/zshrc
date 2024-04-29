@@ -39,3 +39,4 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
