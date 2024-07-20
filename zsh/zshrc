@@ -23,15 +23,16 @@ fi
 
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(fzf --zsh)"
-eval "$(gh copilot alias -- zsh)"
 
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]
 then
-  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.warp.toml"
+  # export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.warp.toml"
 else
-  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
+  # export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
+  eval "$(gh copilot alias -- zsh)"
 fi
 
+  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
 
 eval "$(starship init zsh)"
 
