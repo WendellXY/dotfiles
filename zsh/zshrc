@@ -41,3 +41,5 @@ source $(brew --prefix)/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-h
 
 [[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
