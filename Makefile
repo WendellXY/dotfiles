@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nvim fish zsh starship alacritty wezterm
+.PHONY: install brew nvim fish zsh starship alacritty wezterm kitty
 
 install: brew nvim fish zsh starship
 
@@ -52,3 +52,10 @@ wezterm: | ${HOME}/.config/wezterm
 
 ${HOME}/.config/wezterm: ${HOME}/.config
 	ln -s ${BASE_DIR}/wezterm ${HOME}/.config/wezterm
+
+# MARK: kitty
+kitty: | ${HOME}/.config/kitty
+	@echo "WezTerm configuration installed"
+
+${HOME}/.config/kitty: ${HOME}/.config
+	ln -s ${BASE_DIR}/kitty ${HOME}/.config/kitty
