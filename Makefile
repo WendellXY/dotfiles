@@ -26,11 +26,14 @@ ${HOME}/.config/fish: ${HOME}/.config
 	ln -s ${BASE_DIR}/fish ${HOME}/.config/fish
 
 # MARK: zsh
-zsh: | ${HOME}/.zshrc
+zsh: | ${HOME}/.zshrc ${HOME}/.config/zsh
 	@echo "Zsh configuration installed"
 
 ${HOME}/.zshrc:
 	ln -s ${BASE_DIR}/zsh/zshrc ${HOME}/.zshrc
+
+${HOME}/.config/zsh:
+	ln -s ${BASE_DIR}/zsh ${HOME}/.config/zsh
 
 # MARK: starship
 starship: | ${HOME}/.config/starship

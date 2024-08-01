@@ -1,5 +1,20 @@
+# My Zsh configuration file
+
+# Check if Homebrew is available and set FPATH for additional completions
+if type brew &>/dev/null; then
+  # Add Homebrew's sbin directory to the PATH 
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  # Add Homebrew's zsh-completions directory to FPATH
+  FPATH="$(brew --prefix)/share/zsh-completions:${FPATH}"
+fi
+
+# Custom Completion Directories (~/.config/zsh/completions)
+FPATH="$HOME/.config/zsh/completions:${FPATH}"
+
+# Source zsh-autocomplete plugin (handles compinit internally)
 source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+# Aliases for convenience and enhanced command-line experience
 alias cat=bat
 alias ls="eza --icons"
 alias ll="eza -alh --icons"
@@ -7,39 +22,38 @@ alias tree="eza --tree --icons"
 alias vim=nvim
 alias ..="cd .."
 
+# Function to reset the cursor style after exiting nvim
 nvim() {
     command nvim "$@"
-    # Reset the cursor style on exit
-    echo -ne "\e[0 q"
+    echo -ne "\e[0 q"  # Reset the cursor style on exit
 }
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
-
+# Initialize various tools and plugins
+# zoxide: Fast directory navigation tool
 eval "$(zoxide init zsh --cmd cd)"
-eval "$(fzf --zsh)"
 
-if [[ $TERM_PROGRAM == "WarpTerminal" ]]
-then
-  # export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.warp.toml"
-else
-  # export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
-  eval "$(gh copilot alias -- zsh)"
-fi
+# GitHub Copilot: Command line suggestions and completions
+# eval "$(gh copilot alias -- zsh)"
 
-  export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
-
+# Starship: Cross-shell prompt with extensive customization
+export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
 eval "$(starship init zsh)"
 
+# zsh-autosuggestions: Suggests commands as you type based on history
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# rbenv: Ruby version management
+if type rbenv &>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
+# Update PATH for rustup, the Rust toolchain installer
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+
+# fzf: Fuzzy finder configuration
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# zsh-fast-syntax-highlighting: Syntax highlighting for Zsh
+source $(brew --prefix)/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
