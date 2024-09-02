@@ -17,3 +17,6 @@ function starship_transient_prompt_func
 end
 starship init fish | source
 enable_transience
+
+# Rbenv configuration
+status --is-interactive; and source (rbenv init -|psub)
