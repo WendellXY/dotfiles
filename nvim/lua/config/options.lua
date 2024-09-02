@@ -6,3 +6,4 @@ vim.cmd("set number")
 vim.cmd("set rtp+=/opt/homebrew/opt/fzf")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
+vim.wo.relativenumber = true
