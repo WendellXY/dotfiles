@@ -1,11 +1,3 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette
 {
   "assistant": {
     "default_model": {
@@ -14,19 +6,44 @@
     },
     "version": "2"
   },
+  "autosave": "on_focus_change",
   "vim_mode": true,
-  "ui_font_family": "Monaspace Xenon",
+  "ui_font_family": "MonaspiceXe Nerd Font",
   "ui_font_size": 13,
-  "buffer_font_family": "Monaspace Krypton",
+  "buffer_font_family": "Monaspace Argon",
   "buffer_font_features": {
     "calt": true,
     "liga": true
   },
   "buffer_font_size": 13,
   "format_on_save": "on",
+  "tabs": {
+    "close_position": "left",
+    "file_icons": true,
+    "git_status": true
+  },
+  "terminal": {
+    "blinking": "terminal_controlled",
+    "copy_on_select": true,
+    "detect_venv": {
+      "on": {
+        "directories": [".venv", "venv", "env", ".env"],
+        "activate_script": "default"
+      }
+    },
+    "dock": "bottom",
+    "font_family": "MonaspiceXe Nerd Font",
+    "shell": {
+      "program": "/opt/homebrew/bin/fish"
+    },
+    "toolbar": {
+      "title": true
+    },
+    "working_directory": "current_project_directory"
+  },
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Mocha",
+    "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha"
   },
   "relative_line_numbers": true
