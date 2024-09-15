@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nvim fish zsh starship alacritty wezterm kitty zed
+.PHONY: install brew nvim fish zsh starship alacritty wezterm kitty warp zed
 
 install: brew nvim fish zsh starship
 
@@ -62,6 +62,13 @@ kitty: | ${HOME}/.config/kitty
 
 ${HOME}/.config/kitty: ${HOME}/.config
 	ln -s ${BASE_DIR}/kitty ${HOME}/.config/kitty
+
+# MARK: warp
+warp: | ${HOME}/.warp
+	@echo "Warp configuration installed"
+
+${HOME}/.warp:
+	ln -s ${BASE_DIR}/warp ${HOME}/.warp
 
 # MARK: Zed
 zed: | ${HOME}/.config/zed
