@@ -43,8 +43,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha"
+    "light": "Custom Catppuccin Latte",
+    "dark": "Custom Catppuccin Mocha"
   },
   "relative_line_numbers": true
 }

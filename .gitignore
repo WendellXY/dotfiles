@@ -7,3 +7,4 @@ nvim/lazy-lock.json
 # Ignore all files within the 'zed' folder, except the 'settings.json' file
 zed/*
 !zed/settings.json
+!zed/themes
