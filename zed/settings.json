@@ -7,6 +7,7 @@
     "version": "2"
   },
   "autosave": "on_focus_change",
+  "cursor_shape": "bar",
   "vim_mode": true,
   "ui_font_family": "MonaspiceXe Nerd Font",
   "ui_font_size": 13,
