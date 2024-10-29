@@ -26,6 +26,7 @@
   "terminal": {
     "blinking": "terminal_controlled",
     "copy_on_select": true,
+    "cursor_shape": "underline",
     "detect_venv": {
       "on": {
         "directories": [".venv", "venv", "env", ".env"],
