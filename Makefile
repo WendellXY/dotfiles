@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nvim fish zsh starship alacritty wezterm kitty warp zed
+.PHONY: install brew nvim nushell fish zsh starship alacritty wezterm kitty warp zed
 
 install: brew nvim fish zsh starship
 
@@ -17,6 +17,13 @@ nvim: | ${HOME}/.config/nvim
 
 ${HOME}/.config/nvim: ${HOME}/.config
 	ln -s ${BASE_DIR}/nvim ${HOME}/.config/nvim
+
+# MARK: nushell
+nushell: | ${HOME}/Application\ Support/nushell
+	@echo "Nushell configuration installed"
+
+${HOME}/Application\ Support/nushell:
+	ln -s "${BASE_DIR}/nushell" "${HOME}/Library/Application Support/"
 
 # MARK: fish
 fish: | ${HOME}/.config/fish
