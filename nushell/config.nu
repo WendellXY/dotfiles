@@ -897,8 +897,4 @@ $env.config = {
     ]
 }
 
-$env.PATH = (
-    $env.PATH 
-    | split row (char esep) 
-    | prepend '/opt/homebrew/bin' 
-)
+source ~/.zoxide.nu

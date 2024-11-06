@@ -97,5 +97,13 @@ $env.NU_PLUGIN_DIRS = [
 # path add ($env.HOME | path join ".local" "bin")
 # $env.PATH = ($env.PATH | uniq)
 
+$env.PATH = (
+    $env.PATH 
+    | split row (char esep) 
+    | prepend '/opt/homebrew/bin' 
+)
+
+zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
