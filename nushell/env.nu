@@ -51,8 +51,5 @@ zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
 $env.STARSHIP_CONFIG = (([$env.HOME '.config' 'starship' 'starship.toml'] | path join) | path expand)
 
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
-
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')

@@ -739,7 +739,6 @@ $env.config = {
 }
 
 source ~/.zoxide.nu
-use ~/.cache/starship/init.nu
-
+source prompt.nu
 source theme.nu
 source completions.nu
