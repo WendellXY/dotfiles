@@ -1,0 +1,10 @@
+use ($nu.default-config-dir | path join 'completions/bat-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/cargo-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/curl-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/eza-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/gh-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/git-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/make-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/rustup-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/ssh-completions.nu') *
+use ($nu.default-config-dir | path join 'completions/vscode-completions.nu') *

@@ -899,3 +899,5 @@ $env.config = {
 
 source ~/.zoxide.nu
 use ~/.cache/starship/init.nu
+
+source completions.nu
