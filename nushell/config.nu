@@ -742,3 +742,4 @@ source ~/.zoxide.nu
 source prompt.nu
 source theme.nu
 source completions.nu
+source alias.nu
