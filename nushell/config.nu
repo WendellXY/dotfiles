@@ -743,3 +743,4 @@ source prompt.nu
 source theme.nu
 source completions.nu
 source alias.nu
+source commands.nu

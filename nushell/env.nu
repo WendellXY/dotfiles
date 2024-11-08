@@ -30,6 +30,8 @@ $env.NU_PLUGIN_DIRS = [
     ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
+$env.CARGO_HOME = ($env.HOME | path join '.cargo')
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 # An alternate way to add entries to $env.PATH is to use the custom command `path add`
@@ -41,11 +43,10 @@ $env.NU_PLUGIN_DIRS = [
 # path add ($env.HOME | path join ".local" "bin")
 # $env.PATH = ($env.PATH | uniq)
 
-$env.PATH = (
-    $env.PATH 
-    | split row (char esep) 
-    | prepend '/opt/homebrew/bin' 
-)
+use std "path add"
+
+path add /opt/homebrew/bin
+path add ($env.CARGO_HOME | path join "bin")
 
 zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
