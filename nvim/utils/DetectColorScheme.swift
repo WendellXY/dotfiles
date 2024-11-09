@@ -1,1 +1,1 @@
-/Users/wendell/Developer/dotfiles/utils/DetectColorScheme.swift
+../../utils/DetectColorScheme.swift
