@@ -3,7 +3,7 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nvim nushell fish zsh starship alacritty wezterm kitty warp zed
+.PHONY: install brew nvim nushell fish zsh starship alacritty wezterm kitty warp zed bat
 
 install: brew nvim fish zsh starship
 
@@ -83,3 +83,10 @@ zed: | ${HOME}/.config/zed
 
 ${HOME}/.config/zed: ${HOME}/.config
 	ln -s ${BASE_DIR}/zed ${HOME}/.config/zed
+
+# MARK: bat
+bat: | ${HOME}/.config/bat
+	@echo "Bat configuration installed"
+
+${HOME}/.config/bat: ${HOME}/.config
+	ln -s ${BASE_DIR}/bat ${HOME}/.config/bat
