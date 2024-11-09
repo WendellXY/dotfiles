@@ -21,3 +21,10 @@ def "git tag inc" [
 
     git tag $tag
 }
+
+def "plugin load" [
+    name
+] {
+    cargo install $"nu_plugin_($name)"
+    plugin add ($env.CARGO_HOME | path join "bin" $"nu_plugin_($name)")
+}
