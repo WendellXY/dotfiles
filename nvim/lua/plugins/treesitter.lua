@@ -4,6 +4,7 @@ return {
     ensure_installed = {
       "c",
       "lua",
+      "nu",
       "vim",
       "vimdoc",
       "html",
@@ -14,4 +15,3 @@ return {
     indent = { enable = true },
   },
 }
-
