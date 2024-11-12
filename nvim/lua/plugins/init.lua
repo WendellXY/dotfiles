@@ -13,7 +13,6 @@ return {
   {
     "mrcjkb/rustaceanvim",
     version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
     ft = "rust",
     config = function()
       local mason_registry = require "mason-registry"
@@ -39,6 +38,9 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    dependencies = {
+      "wojciech-kulik/xcodebuild.nvim",
+    },
     config = function()
       local dap, dapui = require "dap", require "dapui"
       dap.listeners.before.attach.dapui_config = function()
@@ -53,6 +55,13 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+
+      local mason_registry = require "mason-registry"
+      local codelldb = mason_registry.get_package "codelldb"
+      local extension_path = codelldb:get_install_path() .. "/extension/"
+      local codelldb_path = extension_path .. "adapter/codelldb"
+      local xcodebuild_dap = require "xcodebuild.integrations.dap"
+      xcodebuild_dap.setup(codelldb_path)
     end,
   },
   {

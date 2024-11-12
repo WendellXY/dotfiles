@@ -36,7 +36,7 @@ vim.schedule(function()
   require "mappings"
 end)
 
-vim.o.shell = "/opt/homebrew/bin/nu"
+-- vim.o.shell = "/opt/homebrew/bin/nu"
 
 local autocmd = vim.api.nvim_create_autocmd
 
