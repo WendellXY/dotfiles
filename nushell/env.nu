@@ -47,6 +47,7 @@ use std "path add"
 
 path add /opt/homebrew/bin
 path add ($env.CARGO_HOME | path join "bin")
+path add ($env.HOME | path join ".rbenv" "shims")
 
 zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
 
