@@ -738,7 +738,8 @@ $env.config = {
     ]
 }
 
-source ~/.zoxide.nu
+source zoxide.nu
+
 source prompt.nu
 source theme.nu
 source completions.nu

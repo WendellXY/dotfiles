@@ -50,7 +50,7 @@ path add ($env.CARGO_HOME | path join "bin")
 path add ($env.HOME | path join ".rbenv" "shims")
 path add ($env.HOME | path join ".local" "bin")
 
-zoxide init nushell --cmd cd | save -f ~/.zoxide.nu
+zoxide init nushell --cmd cd | save -f ($nu.default-config-dir | path join "zoxide.nu")
 
 $env.STARSHIP_CONFIG = (([$env.HOME '.config' 'starship' 'starship.toml'] | path join) | path expand)
 
