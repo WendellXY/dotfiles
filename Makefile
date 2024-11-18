@@ -19,10 +19,10 @@ ${HOME}/.config/nvim: ${HOME}/.config
 	ln -s ${BASE_DIR}/nvim ${HOME}/.config/nvim
 
 # MARK: nushell
-nushell: | ${HOME}/Application\ Support/nushell
+nushell: | ${HOME}/Library/Application\ Support/nushell
 	@echo "Nushell configuration installed"
 
-${HOME}/Application\ Support/nushell:
+${HOME}/Library/Application\ Support/nushell:
 	ln -s "${BASE_DIR}/nushell" "${HOME}/Library/Application Support/"
 
 # MARK: fish
