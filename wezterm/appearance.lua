@@ -18,12 +18,12 @@
 local module = {}
 
 function module.set(config)
-  config.default_cursor_style = "BlinkingUnderline"
-  config.hide_tab_bar_if_only_one_tab = true
-  config.window_decorations = "NONE | RESIZE"
-  config.color_scheme = 'Tomorrow Night Bright'
+	config.default_cursor_style = "BlinkingUnderline"
+	config.hide_tab_bar_if_only_one_tab = true
+	config.window_decorations = "NONE | RESIZE"
+	config.color_scheme = "Catppuccin Mocha"
 
-  -- config.color_scheme = scheme_for_appearance(get_appearance())
+	-- config.color_scheme = scheme_for_appearance(get_appearance())
 end
 
 return module
