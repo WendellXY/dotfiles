@@ -1,8 +1,22 @@
 require "nvchad.mappings"
 
--- add yours here
+-- Unmap Default Keybindings
+
+local del = vim.keymap.del
+
+del("n", "<Leader>/")
+del("v", "<Leader>/")
+
+del("n", "<Leader>n")
+del("n", "<Leader>rn")
+
+-- Set Keybindings
 
 local map = vim.keymap.set
+
+-- Comments
+map("n", "<D-/>", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<D-/>", "gc", { desc = "toggle comment", remap = true })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
