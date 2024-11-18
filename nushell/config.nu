@@ -739,6 +739,7 @@ $env.config = {
 }
 
 source zoxide.nu
+source atuin.nu
 
 source prompt.nu
 source theme.nu
