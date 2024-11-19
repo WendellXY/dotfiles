@@ -4,6 +4,7 @@ tap "iina/mpv-iina"
 tap "playcover/playcover"
 brew "little-cms2"
 brew "webp"
+brew "atuin"
 brew "bat"
 brew "python@3.12"
 brew "cmake"
@@ -38,6 +39,7 @@ brew "git-lfs"
 brew "swift-protobuf"
 brew "grpc-swift"
 brew "luajit"
+brew "mas"
 brew "meson"
 brew "mujs"
 brew "neovim"
@@ -63,6 +65,7 @@ brew "zsh-autocomplete", args: ["HEAD"]
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-fast-syntax-highlighting"
+brew "zsh-syntax-highlighting"
 cask "android-platform-tools"
 cask "arc"
 cask "copilot-for-xcode"
@@ -73,9 +76,11 @@ cask "font-jetbrains-mono"
 cask "font-monaspace"
 cask "font-sf-mono-nerd-font"
 cask "github"
+cask "github-copilot-for-xcode"
 cask "iina"
 cask "imageoptim"
 cask "iterm2"
+cask "jordanbaird-ice"
 cask "kitty"
 cask "notion"
 cask "playcover-community"
@@ -83,8 +88,21 @@ cask "raycast"
 cask "sf-symbols"
 cask "visual-studio-code"
 cask "warp"
+cask "wezterm@nightly"
 cask "zed"
 cask "zerotier-one"
+mas "Developer", id: 640199958
+mas "Keynote", id: 409183694
+mas "Microsoft Excel", id: 462058435
+mas "Noir", id: 1592917505
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Telegram", id: 747648890
+mas "TestFlight", id: 899247664
+mas "Twitter", id: 1482454543
+mas "Wallpaper Play", id: 1638457121
+mas "WeChat", id: 836500024
+mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
 vscode "alefragnani.project-manager"
 vscode "bmalehorn.vscode-fish"
@@ -146,6 +164,7 @@ vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-repositories"
 vscode "nickdemayo.vscode-json-editor"
 vscode "oliversturm.fix-json"
+vscode "openai.openai-chatgpt-adhoc"
 vscode "pkief.material-icon-theme"
 vscode "pmneo.tsimporter"
 vscode "psioniq.psi-header"
