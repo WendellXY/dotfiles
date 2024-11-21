@@ -19,6 +19,21 @@ function module.set(config)
       mods = "SHIFT|CMD",
       action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
     },
+    {
+      key = "j",
+      mods = "CMD",
+      action = wezterm.action.PaneSelect,
+    },
+    {
+      key = "`",
+      mods = "META",
+      action = wezterm.action.RotatePanes "CounterClockwise",
+    },
+    {
+      key = "`",
+      mods = "META|SHIFT",
+      action = wezterm.action.RotatePanes "Clockwise",
+    },
   }
 end
 
