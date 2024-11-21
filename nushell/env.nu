@@ -2,6 +2,9 @@
 #
 # version = "0.99.1"
 
+$env.EDITOR = "nvim"
+
+$env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -50,7 +53,7 @@ path add ($env.CARGO_HOME | path join "bin")
 path add ($env.HOME | path join ".rbenv" "shims")
 path add ($env.HOME | path join ".local" "bin")
 
-zoxide init nushell --cmd cd | save -f ($nu.default-config-dir | path join "zoxide.nu")
+zoxide init nushell | save -f ($nu.default-config-dir | path join "zoxide.nu")
 atuin init nu | save -f ($nu.default-config-dir | path join "atuin.nu")
 
 $env.STARSHIP_CONFIG = (([$env.HOME '.config' 'starship' 'starship.toml'] | path join) | path expand)
