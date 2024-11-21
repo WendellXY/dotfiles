@@ -90,3 +90,10 @@ bat: | ${HOME}/.config/bat
 
 ${HOME}/.config/bat: ${HOME}/.config
 	ln -s ${BASE_DIR}/bat ${HOME}/.config/bat
+
+# MARK: yazi
+yazi: | ${HOME}/.config/yazi
+	@echo "Yazi configuration installed"
+
+${HOME}/.config/yazi: ${HOME}/.config
+	ln -s ${BASE_DIR}/yazi ${HOME}/.config/yazi
