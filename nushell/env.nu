@@ -4,7 +4,6 @@
 
 $env.EDITOR = "nvim"
 
-$env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -57,6 +56,8 @@ zoxide init nushell | save -f ($nu.default-config-dir | path join "zoxide.nu")
 atuin init nu | save -f ($nu.default-config-dir | path join "atuin.nu")
 
 $env.STARSHIP_CONFIG = (([$env.HOME '.config' 'starship' 'starship.toml'] | path join) | path expand)
+
+$env.LS_COLORS = (vivid generate catppuccin-mocha | str trim)
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
