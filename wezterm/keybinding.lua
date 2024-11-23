@@ -4,24 +4,46 @@ local module = {}
 
 function module.set(config)
   config.keys = {
+    -- MARK: General
+    {
+      key = "q",
+      mods = "SUPER",
+      action = wezterm.action.QuitApplication,
+    },
+    {
+      key = "c",
+      mods = "SUPER",
+      action = wezterm.action.CopyTo "Clipboard",
+    },
+    {
+      key = "v",
+      mods = "SUPER",
+      action = wezterm.action.PasteFrom "Clipboard",
+    },
+    {
+      key = "l",
+      mods = "CTRL|SHIFT",
+      action = wezterm.action.ShowDebugOverlay,
+    },
+    -- MARK: Pane management
     {
       key = "w",
-      mods = "CMD",
+      mods = "SUPER",
       action = wezterm.action.CloseCurrentPane { confirm = true },
     },
     {
       key = "d",
-      mods = "CMD",
+      mods = "SUPER",
       action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
     },
     {
       key = "d",
-      mods = "SHIFT|CMD",
+      mods = "SHIFT|SUPER",
       action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
     },
     {
       key = "j",
-      mods = "CMD",
+      mods = "SUPER",
       action = wezterm.action.PaneSelect,
     },
     {

@@ -10,10 +10,15 @@ del("v", "<Leader>/")
 del("n", "<Leader>n")
 del("n", "<Leader>rn")
 
+del("n", "<C-n>")
+del("n", "<leader>e")
 -- Set Keybindings
 
 local map = vim.keymap.set
 
+-- Sidebar
+map("n", "<D-0>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<D-1>", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
 -- Comments
 map("n", "<D-/>", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<D-/>", "gc", { desc = "toggle comment", remap = true })
