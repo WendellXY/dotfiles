@@ -97,3 +97,10 @@ yazi: | ${HOME}/.config/yazi
 
 ${HOME}/.config/yazi: ${HOME}/.config
 	ln -s ${BASE_DIR}/yazi ${HOME}/.config/yazi
+
+# MARK: sketchybar
+sketchybar: | ${HOME}/.config/sketchybar
+	@echo "SketchyBar configuration installed"
+
+${HOME}/.config/sketchybar: ${HOME}/.config
+	ln -s ${BASE_DIR}/sketchybar ${HOME}/.config/sketchybar
