@@ -1,10 +1,10 @@
-local icons = require("icons")
-local colors = require("colors")
-local settings = require("settings")
+local icons = require "icons"
+local colors = require "colors"
+local settings = require "settings"
 
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
-sbar.exec("killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
+sbar.exec "killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0"
 
 local popup_width = 250
 
@@ -64,17 +64,17 @@ local wifi = sbar.add("item", "widgets.wifi.padding", {
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
   wifi.name,
   wifi_up.name,
-  wifi_down.name
+  wifi_down.name,
 }, {
   background = { color = colors.bg1 },
-  popup = { align = "center", height = 30 }
+  popup = { align = "center", height = 30 },
 })
 
 local ssid = sbar.add("item", {
   position = "popup." .. wifi_bracket.name,
   icon = {
     font = {
-      style = settings.font.style_map["Bold"]
+      style = settings.font.style_map["Bold"],
     },
     string = icons.wifi.router,
   },
@@ -83,7 +83,7 @@ local ssid = sbar.add("item", {
   label = {
     font = {
       size = 15,
-      style = settings.font.style_map["Bold"]
+      style = settings.font.style_map["Bold"],
     },
     max_chars = 18,
     string = "????????????",
@@ -91,8 +91,8 @@ local ssid = sbar.add("item", {
   background = {
     height = 2,
     color = colors.grey,
-    y_offset = -15
-  }
+    y_offset = -15,
+  },
 })
 
 local hostname = sbar.add("item", {
@@ -107,7 +107,7 @@ local hostname = sbar.add("item", {
     string = "????????????",
     width = popup_width / 2,
     align = "right",
-  }
+  },
 })
 
 local ip = sbar.add("item", {
@@ -121,7 +121,7 @@ local ip = sbar.add("item", {
     string = "???.???.???.???",
     width = popup_width / 2,
     align = "right",
-  }
+  },
 })
 
 local mask = sbar.add("item", {
@@ -135,7 +135,7 @@ local mask = sbar.add("item", {
     string = "???.???.???.???",
     width = popup_width / 2,
     align = "right",
-  }
+  },
 })
 
 local router = sbar.add("item", {
@@ -157,56 +157,56 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 wifi_up:subscribe("network_update", function(env)
   local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
   local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
-  wifi_up:set({
+  wifi_up:set {
     icon = { color = up_color },
     label = {
       string = env.upload,
-      color = up_color
-    }
-  })
-  wifi_down:set({
+      color = up_color,
+    },
+  }
+  wifi_down:set {
     icon = { color = down_color },
     label = {
       string = env.download,
-      color = down_color
-    }
-  })
+      color = down_color,
+    },
+  }
 end)
 
-wifi:subscribe({"wifi_change", "system_woke"}, function(env)
+wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
   sbar.exec("ipconfig getifaddr en0", function(ip)
     local connected = not (ip == "")
-    wifi:set({
+    wifi:set {
       icon = {
         string = connected and icons.wifi.connected or icons.wifi.disconnected,
         color = connected and colors.white or colors.red,
       },
-    })
+    }
   end)
 end)
 
 local function hide_details()
-  wifi_bracket:set({ popup = { drawing = false } })
+  wifi_bracket:set { popup = { drawing = false } }
 end
 
 local function toggle_details()
   local should_draw = wifi_bracket:query().popup.drawing == "off"
   if should_draw then
-    wifi_bracket:set({ popup = { drawing = true }})
+    wifi_bracket:set { popup = { drawing = true } }
     sbar.exec("networksetup -getcomputername", function(result)
-      hostname:set({ label = result })
+      hostname:set { label = result }
     end)
     sbar.exec("ipconfig getifaddr en0", function(result)
-      ip:set({ label = result })
+      ip:set { label = result }
     end)
     sbar.exec("ipconfig getsummary en0 | awk -F ' SSID : '  '/ SSID : / {print $2}'", function(result)
-      ssid:set({ label = result })
+      ssid:set { label = result }
     end)
     sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Subnet mask: ' '/^Subnet mask: / {print $2}'", function(result)
-      mask:set({ label = result })
+      mask:set { label = result }
     end)
     sbar.exec("networksetup -getinfo Wi-Fi | awk -F 'Router: ' '/^Router: / {print $2}'", function(result)
-      router:set({ label = result })
+      router:set { label = result }
     end)
   else
     hide_details()
@@ -220,8 +220,8 @@ wifi:subscribe("mouse.exited.global", hide_details)
 
 local function copy_label_to_clipboard(env)
   local label = sbar.query(env.NAME).label.value
-  sbar.exec("echo \"" .. label .. "\" | pbcopy")
-  sbar.set(env.NAME, { label = { string = icons.clipboard, align="center" } })
+  sbar.exec('echo "' .. label .. '" | pbcopy')
+  sbar.set(env.NAME, { label = { string = icons.clipboard, align = "center" } })
   sbar.delay(1, function()
     sbar.set(env.NAME, { label = { string = label, align = "right" } })
   end)
