@@ -10,7 +10,10 @@ local battery = sbar.add("item", "widgets.battery", {
       size = 19.0,
     },
   },
-  label = { font = { family = settings.font.numbers } },
+  label = {
+    width = 0,
+    font = { family = settings.font.numbers },
+  },
   update_freq = 180,
   popup = { align = "center" },
 })
@@ -28,6 +31,31 @@ local remaining_time = sbar.add("item", {
     align = "right",
   },
 })
+
+-- When the battery percent is less than 20, the label of the battery widget would always shown.
+local is_low_battery = false
+
+local function animate_battery_label(show_animation)
+  if is_low_battery then
+    return
+  end
+
+  sbar.animate("tanh", 30, function()
+    if show_animation then
+      battery:set { label = { width = "dynamic" } }
+    else
+      battery:set { label = { width = 0 } }
+    end
+  end)
+end
+
+battery:subscribe("mouse.entered", function()
+  animate_battery_label(true)
+end)
+
+battery:subscribe("mouse.exited", function()
+  animate_battery_label(false)
+end)
 
 battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()
   sbar.exec("pmset -g batt", function(batt_info)
@@ -59,6 +87,12 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
         icon = icons.battery._0
         color = colors.red
       end
+    end
+
+    is_low_battery = charge <= 0
+
+    if is_low_battery then
+      battery:set { label = { width = "dynamic" } }
     end
 
     local lead = ""
