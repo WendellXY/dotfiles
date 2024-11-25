@@ -11,6 +11,11 @@ function module.set(config)
       action = wezterm.action.QuitApplication,
     },
     {
+      key = "n",
+      mods = "SUPER",
+      action = wezterm.action.SpawnWindow,
+    },
+    {
       key = "c",
       mods = "SUPER",
       action = wezterm.action.CopyTo "Clipboard",
