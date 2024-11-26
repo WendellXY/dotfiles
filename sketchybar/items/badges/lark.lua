@@ -18,7 +18,7 @@ local lark = sbar.add("item", "badges.lark", {
     drawing = false,
   },
   update_freq = 10,
-  click_script = "open -a Lark",
+  click_script = "open -a Feishu",
 })
 
 lark:subscribe({ "forced", "routine", "system_woke" }, function(env)
