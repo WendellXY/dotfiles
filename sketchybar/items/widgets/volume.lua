@@ -8,6 +8,7 @@ local volume_percent = sbar.add("item", "widgets.volume1", {
   position = "right",
   icon = { drawing = false },
   label = {
+    width = 0,
     string = "??%",
     padding_left = -1,
     font = { family = settings.font.numbers },
@@ -44,6 +45,24 @@ local volume_bracket = sbar.add("bracket", "widgets.volume.bracket", {
   background = { color = colors.bg1 },
   popup = { align = "center" },
 })
+
+local function animate_volume_level(show_animation)
+  sbar.animate("tanh", 30, function()
+    if show_animation then
+      volume_percent:set { label = { width = "dynamic" } }
+    else
+      volume_percent:set { label = { width = 0 } }
+    end
+  end)
+end
+
+volume_bracket:subscribe("mouse.entered", function()
+  animate_volume_level(true)
+end)
+
+volume_bracket:subscribe("mouse.exited", function()
+  animate_volume_level(false)
+end)
 
 sbar.add("item", "widgets.volume.padding", {
   position = "right",
