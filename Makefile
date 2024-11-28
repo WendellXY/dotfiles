@@ -104,3 +104,17 @@ sketchybar: | ${HOME}/.config/sketchybar
 
 ${HOME}/.config/sketchybar: ${HOME}/.config
 	ln -s ${BASE_DIR}/sketchybar ${HOME}/.config/sketchybar
+
+# MARK: aerospace
+aerospace: | ${HOME}/.config/aerospace
+	@echo "Aerospace configuration installed"
+
+${HOME}/.config/aerospace: ${HOME}/.config
+	ln -s ${BASE_DIR}/aerospace ${HOME}/.config/aerospace
+
+# MARK: yabai
+yabai: | ${HOME}/.config/yabai
+	@echo "Yabai configuration installed"
+
+${HOME}/.config/yabai: ${HOME}/.config
+	ln -s ${BASE_DIR}/yabai ${HOME}/.config/yabai
