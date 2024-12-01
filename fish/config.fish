@@ -6,6 +6,9 @@ end
 # zoxide: Fast directory navigation tool
 zoxide init fish --cmd cd | source
 
+# atuin: SQLite-powered shell history manager
+atuin init fish | source
+
 # fzf: Fuzzy finder configuration
 fzf --fish | source
 set -Ux FZF_DEFAULT_COMMAND "rg --files"

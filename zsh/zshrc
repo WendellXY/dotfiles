@@ -39,6 +39,11 @@ eval "$(zoxide init zsh --cmd cd)"
 export STARSHIP_CONFIG="$(readlink -f "$HOME/.config/starship")/starship.toml"
 eval "$(starship init zsh)"
 
+# atuin: SQLite-powered shell history manager
+if type atuin &>/dev/null; then
+  eval "$(atuin init zsh)"
+fi
+
 # zsh-autosuggestions: Suggests commands as you type based on history
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
