@@ -25,6 +25,12 @@ nushell: | ${HOME}/Library/Application\ Support/nushell
 ${HOME}/Library/Application\ Support/nushell:
 	ln -s "${BASE_DIR}/nushell" "${HOME}/Library/Application Support/"
 
+nushell-linux: | ${HOME}/.config/nushell
+	@echo "Nushell configuration installed"
+
+${HOME}/.config/nushell:
+	ln -s ${BASE_DIR}/nushell ${HOME}/.config/nushell
+
 # MARK: fish
 fish: | ${HOME}/.config/fish
 	@echo "Fish configuration installed"
