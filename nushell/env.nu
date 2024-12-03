@@ -51,6 +51,7 @@ path add /opt/homebrew/bin
 path add ($env.CARGO_HOME | path join "bin")
 path add ($env.HOME | path join ".rbenv" "shims")
 path add ($env.HOME | path join ".local" "bin")
+path add /nix/var/nix/profiles/default/bin
 
 zoxide init nushell | save -f ($nu.default-config-dir | path join "zoxide.nu")
 atuin init nu | save -f ($nu.default-config-dir | path join "atuin.nu")
