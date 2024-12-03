@@ -4,7 +4,7 @@ local keybinding = require "keybinding"
 
 local config = {}
 
-config.default_prog = { "/opt/homebrew/bin/nu", "-l" }
+-- config.default_prog = { "/opt/homebrew/bin/nu", "-l" }
 config.enable_kitty_keyboard = true
 config.disable_default_key_bindings = true
 
