@@ -8,3 +8,7 @@ nushell/history.txt
 zed/*
 !zed/settings.json
 !zed/themes
+
+!tmux/
+!tmux/**
+tmux/plugins/
