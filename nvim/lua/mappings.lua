@@ -4,14 +4,9 @@ require "nvchad.mappings"
 
 local del = vim.keymap.del
 
-del("n", "<Leader>/")
-del("v", "<Leader>/")
-
 del("n", "<Leader>n")
 del("n", "<Leader>rn")
 
-del("n", "<C-n>")
-del("n", "<leader>e")
 -- Set Keybindings
 
 local map = vim.keymap.set
