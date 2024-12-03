@@ -1,14 +1,15 @@
 .DS_Store
 
 Brewfile.lock.json
-nvim/lazy-lock.json
 nushell/history.txt
 
-# Ignore all files within the 'zed' folder, except the 'settings.json' file
 zed/*
 !zed/settings.json
 !zed/themes
 
-!tmux/
-!tmux/**
+zsh/.zsh_history
+zsh/.zsh_sessions
+zsh/.zcompdump
+zsh/.zcompcache
+
 tmux/plugins/

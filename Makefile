@@ -39,11 +39,11 @@ ${HOME}/.config/fish: ${HOME}/.config
 	ln -s ${BASE_DIR}/fish ${HOME}/.config/fish
 
 # MARK: zsh
-zsh: | ${HOME}/.zshrc ${HOME}/.config/zsh
+zsh: | ${HOME}/.zshenv ${HOME}/.config/zsh
 	@echo "Zsh configuration installed"
 
-${HOME}/.zshrc:
-	ln -s ${BASE_DIR}/zsh/zshrc ${HOME}/.zshrc
+${HOME}/.zshenv:
+	ln -s ${BASE_DIR}/zsh/.zshenv ${HOME}/.zshenv
 
 ${HOME}/.config/zsh:
 	ln -s ${BASE_DIR}/zsh ${HOME}/.config/zsh
