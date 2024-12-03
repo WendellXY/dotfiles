@@ -47,6 +47,6 @@ yabai -m config                                 \
 yabai -m rule --add app="^(Finder|Music|System Settings|Messages|Screen Sharing|Passwords)" manage=off 
 yabai -m rule --add app="^(WeChat|Feishu|Telegram)" manage=off
 
-borders active_colors=0xffe1e3e4 inactive_color=0xff494d64 width=2 &
+borders active_colors=0xffe1e3e4 inactive_color=0xff494d64 blacklist="iPhone Mirroring" width=2 &
 
 echo "yabai configuration loaded.."
