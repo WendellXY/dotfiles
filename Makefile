@@ -124,3 +124,10 @@ yabai: | ${HOME}/.config/yabai
 
 ${HOME}/.config/yabai: ${HOME}/.config
 	ln -s ${BASE_DIR}/yabai ${HOME}/.config/yabai
+
+# MARK: tmux
+tmux: | ${HOME}/.config/tmux
+	@echo "Tmux configuration installed"
+
+${HOME}/.config/tmux: ${HOME}/.config
+	ln -s ${BASE_DIR}/tmux ${HOME}/.config/tmux
