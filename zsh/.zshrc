@@ -42,6 +42,7 @@ zle -N edit-command-line
 # Source external plugins
 if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  source "$ZDOTDIR/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"  # Load syntax highlighting
 fi
 
 if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
