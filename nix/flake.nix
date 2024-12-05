@@ -1,21 +1,21 @@
 {
-  description = "Tzeentch's nix-darwin system flake";
+  description = "Tzeentch's nix-darwin system flake with Home Manager";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
   let
     configuration = { pkgs, config, ... }: {
-
       nixpkgs.config.allowUnfree = true;
 
-# List packages installed in system profile. To search by name, run:
-# $ nix-env -qaP | grep wget
+      # Packages to install in system profile
       environment.systemPackages = with pkgs; let 
         general = [ 
           alacritty
@@ -38,22 +38,13 @@
           zsh-history-substring-search
           zsh-syntax-highlighting
         ];
-
       in general ++ zshPlugins;
 
       homebrew = {
         enable = true;
-        brews = [
-          "mas"
-        ];
-        casks = [
-          "iina"
-          "firefox"
-          "aerospace"
-        ];
-        taps = [
-          "nikitabobko/tap"
-        ];
+        brews = [ "mas" ];
+        casks = [ "iina" "firefox" "aerospace" ];
+        taps = [ "nikitabobko/tap" ];
         masApps = {
           "Xcode"             = 497799835;
           "Twitter"           = 1482454543;
@@ -74,44 +65,57 @@
         onActivation.upgrade = true;
       };
 
-      fonts.packages = [
-        pkgs.monaspace
-      ];
+      fonts.packages = [ pkgs.monaspace ];
 
-      # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
       programs.zsh.enable = true;
-      # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
       system.stateVersion = 5;
 
-      # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+    };
+
+    homeManagerConfiguration = { pkgs, ... }: {
+      # Home Manager configuration
+      home.username = "wendell";
+      home.homeDirectory = "/Users/wendell";
+
+      # Example Home Manager modules and configurations
+      programs.starship.enable = true;
+      programs.git = {
+        enable = true;
+        userEmail = "root@tzeentch.io";
+        userName = "WendellXY";
+      };
     };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#base
     darwinConfigurations."base" = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration
         nix-homebrew.darwinModules.nix-homebrew
+        home-manager.nixosModules.home-manager
         {
           nix-homebrew = {
             enable = true;
             enableRosetta = true;
             user = "wendell";
           };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
         }
       ];
     };
 
-    # Expose the package set, including overlays, for convenience.
+    # Expose Home Manager as a flake output for convenience
+    # homeConfigurations = {
+    #   "wendell" = home-manager.lib.homeManagerConfiguration {
+    #     modules = [ homeManagerConfiguration ];
+    #     pkgs = inputs.nixpkgs;
+    #   };
+    # };
+
     darwinPackages = self.darwinConfigurations."base".pkgs;
   };
 }
