@@ -9,7 +9,7 @@ setopt SHARE_HISTORY                # Share history across sessions
 unsetopt AUTO_REMOVE_SLASH          # Keep trailing slashes on paths
 unsetopt HIST_EXPIRE_DUPS_FIRST     # Don't prioritize duplicates for removal
 unsetopt EXTENDED_HISTORY           # Disable timestamps in history
-
+bindkey -v                          # Use vi keybindings
 source "$ZDOTDIR/alias.zsh"         # Load custom aliases
 source "$ZDOTDIR/cursor_mode.zsh"   # Load cursor mode settings
 # -------------------------------
@@ -22,6 +22,9 @@ export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 if [[ "$(uname -sm)" == "Darwin arm64" ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
 fi
+
+# Ruby gem 
+export PATH="$HOME/.gem/ruby/3.3.0/bin:$PATH"
 
 # -------------------------------
 # fpath Configuration
@@ -41,26 +44,16 @@ autoload -Uz edit-command-line        # Command line editor widget
 zle -N edit-command-line
 
 # Source external plugins
-if [[ -f "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
-  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  source "$ZDOTDIR/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"  # Load syntax highlighting
-fi
+source "$ZSHAREDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZDOTDIR/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"  # Load syntax highlighting
 
-if [[ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-  source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
+source "$ZSHAREDIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-if [[ -f "$(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
-  source "$(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
-fi
+source "$ZSHAREDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
-if [[ -f "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh" ]]; then
-  source "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
-fi
+source "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
 
-if [[ -f "$(brew --prefix)/share/zsh-autosuggestions-abbreviations-strategy/zsh-autosuggestions-abbreviations-strategy.zsh" ]]; then
-  source "$(brew --prefix)/share/zsh-autosuggestions-abbreviations-strategy/zsh-autosuggestions-abbreviations-strategy.zsh"
-fi
+source "$(brew --prefix)/share/zsh-autosuggestions-abbreviations-strategy/zsh-autosuggestions-abbreviations-strategy.zsh"
 
 ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
 
