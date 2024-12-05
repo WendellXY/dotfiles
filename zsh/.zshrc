@@ -11,6 +11,7 @@ unsetopt HIST_EXPIRE_DUPS_FIRST     # Don't prioritize duplicates for removal
 unsetopt EXTENDED_HISTORY           # Disable timestamps in history
 
 source "$ZDOTDIR/alias.zsh"         # Load custom aliases
+source "$ZDOTDIR/cursor_mode.zsh"   # Load cursor mode settings
 # -------------------------------
 # PATH Configuration
 # -------------------------------
