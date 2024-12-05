@@ -3,6 +3,7 @@
 # -------------------------------
 # Define the root directory for Zsh configuration files
 export ZDOTDIR="$HOME/.config/zsh"
+export ZSHAREDIR="$HOME/.local/share/zsh"
 
 # -------------------------------
 # History Configuration
