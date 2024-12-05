@@ -2,13 +2,20 @@ return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = {
+      "vimdoc",
+      "html",
+      "css",
+      "gitignore",
+      "json",
+      "yaml",
+      "toml",
+      "markdown",
+      "markdown_inline",
+
       "c",
       "lua",
       "nu",
       "vim",
-      "vimdoc",
-      "html",
-      "css",
       "swift",
     },
     highlight = { enable = true },

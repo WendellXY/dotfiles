@@ -4,10 +4,21 @@ return {
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "MunifTanjim/nui.nvim",
+    "nvim-tree/nvim-tree.lua",
     "mfussenegger/nvim-dap",
+    "nvim-treesitter/nvim-treesitter",
   },
   config = function()
-    require("xcodebuild").setup {}
+    require("xcodebuild").setup {
+      commands = {
+        extra_build_args = {
+          "-parallelizeTargets",
+        },
+        extra_test_args = {
+          "-parallelizeTargets",
+        },
+      },
+    }
     local mason_registry = require "mason-registry"
     local codelldb = mason_registry.get_package "codelldb"
     local extension_path = codelldb:get_install_path() .. "/extension/"
