@@ -7,6 +7,14 @@ ${HOME}/.config:
 
 install: brew nvim fish zsh starship
 
+# MARK: nix
+nix: | ${HOME}/.config/nix
+	@echo "NeoVim configuration installed"
+
+${HOME}/.config/nix: ${HOME}/.config
+	ln -s ${BASE_DIR}/nix ${HOME}/.config/nix
+
+
 # MARK: HomeBrew
 brew:
 	@brew bundle
