@@ -11,6 +11,10 @@ return {
     },
   },
 
+  rocks = {
+    enabled = false,
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {
