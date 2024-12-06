@@ -44,6 +44,7 @@
             fd # Better find
             fzf # Fuzzy finder
             gh # GitHub CLI
+            git # Version control
             jq # JSON processor
             lazygit # Git client
             ripgrep # Better grep
@@ -65,7 +66,6 @@
             nixpkgs-fmt # Nix code formatter
             vscode
             zed
-
           ];
 
           # Frameworks
@@ -195,7 +195,7 @@
             # Enable press-and-hold repeating
             ApplePressAndHoldEnabled = false;
             InitialKeyRepeat = 10;
-            KeyRepeat = 1;
+            KeyRepeat = 2;
           };
 
           dock = {
