@@ -5,12 +5,25 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, home-manager }:
     let
       configuration = { pkgs, config, ... }: {
         # Packages to install in system profile
@@ -45,23 +58,27 @@
           devTools = [
             cmake # Build system
             cocoapods # iOS dependency manager
+            meson # Build system
             pipx # Python package installer
             fastlane # iOS deployment automation
             neovim # Text editor
             nixpkgs-fmt # Nix code formatter
-            vscode # IDE
+            vscode
+            zed
+
           ];
 
           # Frameworks
           frameworks = [
+            libarchive # Archive library
             libyaml # YAML parser
-
           ];
 
           # Programming Languages and Runtime
           languages = [
             go
             lua
+            luajit
             nodejs
             python3
             ruby_3_3
@@ -78,7 +95,12 @@
 
           # Applications
           applications = [
+            alt-tab-macos # Better app switcher
+            ice-bar # macOS menu bar app
+            image_optim # Image optimizer
+            lmstudio # LLM Studio
             obsidian # Note-taking app
+            ollama # LLM Manager
           ];
 
           # Shell Customization
@@ -108,9 +130,33 @@
 
         homebrew = {
           enable = true;
-          brews = [ "mas" "swiftgen" "xcode-build-server" "xcbeautify" "zsh-completions" "zsh-abbr" "zsh-autosuggestions-abbreviations-strategy" ];
-          casks = [ "iina" "firefox" "aerospace" "wezterm" ];
-          taps = [ "nikitabobko/tap" "olets/tap" ];
+          brews = [ 
+            "mas" 
+            "swiftgen" 
+            "xcode-build-server" 
+            "xcbeautify" 
+            "zsh-completions" 
+            "zsh-abbr" 
+            "zsh-autosuggestions-abbreviations-strategy"
+          ];
+          casks = [ 
+            "arc"
+            "iina"
+            "firefox"
+            "figma"
+            "aerospace"
+            "wezterm"
+            "gitbutler"
+            "github"
+            "github-copilot-for-xcode"
+            "playcover-community"
+            "sf-symbols"
+          ];
+          taps = [ 
+            "nikitabobko/tap"
+            "olets/tap"
+            "playcover/playcover" 
+          ];
           masApps = {
             "Xcode" = 497799835;
             "Twitter" = 1482454543;
@@ -131,7 +177,10 @@
           onActivation.upgrade = true;
         };
 
-        fonts.packages = [ pkgs.monaspace ];
+        fonts.packages = with pkgs; [ 
+          fira-code
+          monaspace 
+        ];
 
         nix.settings.trusted-users = [ "wendell" ];
         services.nix-daemon.enable = true;
@@ -141,8 +190,7 @@
         system.defaults = {
 
           NSGlobalDomain = {
-            # Auto hide the menubar
-            _HIHideMenuBar = true;
+            _HIHideMenuBar = false;
 
             # Enable press-and-hold repeating
             ApplePressAndHoldEnabled = false;
@@ -268,11 +316,19 @@
           configuration
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
+          ({ config, ... }: {                                                          # <--
+           homebrew.taps = builtins.attrNames config.nix-homebrew.taps;               # <--
+          })
           {
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
               user = "wendell";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "homebrew/homebrew-bundle" = homebrew-bundle;
+              };
             };
             home-manager = {
               useGlobalPkgs = true;
