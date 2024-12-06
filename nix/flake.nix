@@ -316,8 +316,8 @@
           configuration
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-          ({ config, ... }: {                                                          # <--
-           homebrew.taps = builtins.attrNames config.nix-homebrew.taps;               # <--
+          ({ config, ... }: {
+            homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
           })
           {
             nix-homebrew = {
