@@ -18,7 +18,7 @@
 local module = {}
 
 function module.set(config)
-  config.default_cursor_style = "BlinkingUnderline"
+  config.default_cursor_style = "BlinkingBar"
   config.hide_tab_bar_if_only_one_tab = true
   config.window_decorations = "NONE | RESIZE"
   config.color_scheme = "Catppuccin Mocha"

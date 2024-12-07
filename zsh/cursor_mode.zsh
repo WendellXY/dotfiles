@@ -2,7 +2,7 @@ function zle-keymap-select zle-line-init zle-line-finish
 {
   case $KEYMAP in
       vicmd)      print -n '\033[1 q';; # block cursor
-      viins|main) print -n '\033[3 q';; # line cursor
+      viins|main) print -n '\033[5 q';; # line cursor
   esac
 }
 
