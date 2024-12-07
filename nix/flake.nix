@@ -59,6 +59,7 @@
                 fzf # Fuzzy finder
                 gh # GitHub CLI
                 git # Version control
+                git-lfs # Git large file storage
                 jq # JSON processor
                 lazygit # Git client
                 ripgrep # Better grep
@@ -166,6 +167,7 @@
               "github-copilot-for-xcode"
               "playcover-community"
               "sf-symbols"
+              "stats"
             ];
             taps = [
               "nikitabobko/tap"
@@ -214,7 +216,7 @@
             };
 
             dock = {
-              orientation = "left";
+              orientation = "right";
 
               # Set dock to auto-hide, and transparentize icons of hidden apps (⌘H)
               autohide = true;

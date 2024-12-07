@@ -228,6 +228,10 @@ if.app-id = 'com.electron.lark'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = "Lark Helper"
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.gitbutler.app'
 run = 'layout floating'
 
@@ -237,5 +241,39 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.raycast.macos'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+if.window-title-regex-substring = 'Settings'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+if.window-title-regex-substring = '.* \| Documentation$'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.nssurge.surge-mac'
+run = 'layout floating'
+
+[[on-window-detected]]  
+if.app-id = 'com.colliderli.iina'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.tencent.cosbrowser'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.electron.oss-browser'
 run = 'layout floating'
 
