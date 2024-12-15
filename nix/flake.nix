@@ -113,11 +113,11 @@
               # Applications
               applications = [
                 alt-tab-macos # Better app switcher
+                google-chrome # Web browser
                 ice-bar # macOS menu bar app
                 image_optim # Image optimizer
                 lmstudio # LLM Studio
                 obsidian # Note-taking app
-                ollama # LLM Manager
               ];
 
               # Shell Customization
@@ -165,6 +165,7 @@
               "gitbutler"
               "github"
               "github-copilot-for-xcode"
+              "ollama" # LLM Manager"
               "playcover-community"
               "sf-symbols"
               "stats"
@@ -223,7 +224,7 @@
               showhidden = true;
 
               persistent-apps = [
-                "/Applications/Firefox.app"
+                "/Applications/Nix Apps/Google Chrome.app"
                 "/System/Applications/Messages.app"
                 "/System/Applications/Mail.app"
                 "/System/Applications/Music.app"
@@ -272,6 +273,16 @@
                 AppleWindowTabbingMode = "always";
               };
 
+            };
+
+            CustomUserPreferences = {
+              "com.apple.AdLib" = {
+                # Disable personalized advertising
+                forceLimitAdTracking = true;
+                allowApplePersonalizedAdvertising = false;
+                allowIdentifierForAdvertising = false;
+              };
+
               "com.apple.finder" = {
                 # Keep the desktop clean
                 ShowHardDrivesOnDesktop = false;
@@ -290,13 +301,13 @@
                 QLEnableTextSelection = true;
               };
 
-              "com.apple.AdLib" = {
-                # Disable personalized advertising
-                forceLimitAdTracking = true;
-                allowApplePersonalizedAdvertising = false;
-                allowIdentifierForAdvertising = false;
+              "com.apple.dt.Xcode" = {
+                # Disable macro validation
+                IDESkipMacroFingerprintValidation = true;
+                # Use the built-in source control management to fix SPM error
+                # https://stackoverflow.com/a/78981529/10769660
+                IDEPackageSupportUseBuiltinSCM = true;
               };
-
             };
 
           };
@@ -321,7 +332,8 @@
             # Zsh plugins
             "zsh/zsh-autosuggestions".source = "${zsh-autosuggestions}/share/zsh-autosuggestions";
             "zsh/zsh-completions".source = "${zsh-completions}/share/zsh-completions";
-            "zsh/zsh-history-substring-search".source = "${zsh-history-substring-search}/share/zsh-history-substring-search";
+            "zsh/zsh-history-substring-search".source =
+              "${zsh-history-substring-search}/share/zsh-history-substring-search";
             "zsh/zsh-syntax-highlighting".source = "${zsh-syntax-highlighting}/share/zsh-syntax-highlighting";
             "zsh/fzf".source = "${fzf}/share/fzf";
           };

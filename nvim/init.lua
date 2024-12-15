@@ -2,6 +2,7 @@ vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 vim.opt.number = true -- for regular numbers
 vim.opt.relativenumber = true -- for relative numbers
+vim.opt.scrolloff = 10 -- start scrolling when we are 30 lines away from the edge
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
