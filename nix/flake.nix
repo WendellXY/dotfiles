@@ -197,6 +197,7 @@
 
           fonts.packages = with pkgs; [
             fira-code
+            nerd-fonts.monaspace
             monaspace
           ];
 
@@ -356,6 +357,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
+              autoMigrate = true;
               user = "wendell";
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;
