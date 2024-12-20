@@ -108,6 +108,7 @@
               mediaTools = [
                 ffmpeg
                 ffmpegthumbnailer
+                imagemagick # Image manipulation
               ];
 
               # Applications
@@ -115,7 +116,6 @@
                 alt-tab-macos # Better app switcher
                 google-chrome # Web browser
                 ice-bar # macOS menu bar app
-                image_optim # Image optimizer
                 lmstudio # LLM Studio
                 obsidian # Note-taking app
               ];
@@ -158,6 +158,7 @@
             casks = [
               "arc"
               "iina"
+              "imageoptim"
               "firefox"
               "figma"
               "aerospace"
