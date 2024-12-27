@@ -91,6 +91,13 @@ warp: | ${HOME}/.warp
 ${HOME}/.warp:
 	ln -s ${BASE_DIR}/warp ${HOME}/.warp
 
+# MARK: Ghostty
+ghostty: | ${HOME}/.config/ghostty
+	@echo "Ghostty configuration installed"
+
+${HOME}/.config/ghostty: ${HOME}/.config
+	ln -s ${BASE_DIR}/ghostty ${HOME}/.config/ghostty
+
 # MARK: Zed
 zed: | ${HOME}/.config/zed
 	@echo "Zed configuration installed"

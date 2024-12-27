@@ -166,6 +166,7 @@
               "gitbutler"
               "github"
               "github-copilot-for-xcode"
+              #              "ghostty"
               "ollama" # LLM Manager"
               "playcover-community"
               "sf-symbols"
