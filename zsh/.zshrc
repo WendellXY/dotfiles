@@ -21,6 +21,7 @@ export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
 if [[ "$(uname -sm)" == "Darwin arm64" ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
+  export PATH="$GHOSTTY_BIN_DIR:$PATH"
 fi
 
 # Ruby gem 
