@@ -20,12 +20,22 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
 if [[ "$(uname -sm)" == "Darwin arm64" ]]; then
+  # Homebrew
   export PATH="/opt/homebrew/bin:$PATH"
+  # Ghostty CLI
   export PATH="$GHOSTTY_BIN_DIR:$PATH"
 fi
 
 # Ruby gem 
 export PATH="$HOME/.gem/ruby/3.3.0/bin:$PATH"
+
+# -------------------------------
+# Zsh Functions
+# -------------------------------
+# Load custom Functions
+for file in "$ZDOTDIR"/functions/*.zsh; do
+  source "$file"
+done
 
 # -------------------------------
 # fpath Configuration

@@ -14,4 +14,3 @@ alias gd="git diff"
 alias gpl="git pull"
 alias gph="git push"
 alias gph!="git push --force"
-
