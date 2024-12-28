@@ -149,6 +149,7 @@
             brews = [
               "mas"
               "swiftgen"
+              "tencent-mars-xlog-util"
               "xcode-build-server"
               "xcbeautify"
               "zsh-completions"
@@ -176,6 +177,7 @@
               "nikitabobko/tap"
               "olets/tap"
               "playcover/playcover"
+              "0x1306a94/homebrew-tap"
             ];
             masApps = {
               "Xcode" = 497799835;
@@ -232,7 +234,7 @@
                 "/System/Applications/Mail.app"
                 "/System/Applications/Music.app"
                 "/System/Applications/System Settings.app"
-                "/Applications/WezTerm.app"
+                "/Applications/Ghostty.app"
               ];
             };
 
