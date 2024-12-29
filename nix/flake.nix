@@ -22,10 +22,12 @@
       flake = false;
     };
 
+		neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, home-manager, rust-overlay, ... }:
+  outputs = { self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, home-manager,
+		neovim-nightly-overlay, rust-overlay, ... }:
     let
       batOverlay = final: prev: {
         bat = final.callPackage ./pkgs/bat.nix { };
@@ -59,7 +61,7 @@
 
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
-                # neovim-overlay.overlay
+								neovim-nightly-overlay.overlays.default
                 rust-overlay.overlays.default
                 batOverlay
               ];
