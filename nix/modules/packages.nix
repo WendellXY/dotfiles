@@ -25,6 +25,8 @@
         git-lfs # Git large file storage
         jq # JSON processor
         lazygit # Git client
+        nix-prefetch-git # Script used to obtain source hashes for fetchgit
+        nix-prefetch-github # Script used to obtain source hashes for fetchFromGitHub
         ripgrep # Better grep
         tldr # Simplified man pages
         tmux # Terminal multiplexer

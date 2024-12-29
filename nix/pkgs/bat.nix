@@ -18,9 +18,9 @@ rustPlatform.buildRustPackage rec {
     owner = "WendellXY";
     repo = "bat";
     rev = "HEAD";
-    hash = "sha256-1RjlJEmY/jMf0IYQbrWrT1CHFyiqgarOl72u9xjjQiQ=";
+    hash = "sha256-VZUhjD/Uo/YLG4+EwO/t6cT1aHFdmtWox4Kn5ZfuoKg=";
   };
-  cargoHash = "sha256-BjCP8R+dFPUAh9o365ATVvpkSd8IoCEC66oUpZoml4Q=";
+  cargoHash = "sha256-PxXYoc6RueU7ZeP3EoJeL6MilrL16VH/gxRbyuvGTFU=";
 
   nativeBuildInputs = [
     pkg-config
