@@ -26,7 +26,7 @@ if [[ "$(uname -sm)" == "Darwin arm64" ]]; then
   export PATH="$GHOSTTY_BIN_DIR:$PATH"
 fi
 
-# Ruby gem 
+# Ruby gem
 export PATH="$HOME/.gem/ruby/3.3.0/bin:$PATH"
 
 # -------------------------------
