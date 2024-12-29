@@ -1,52 +1,51 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
-vim.opt.number = true -- for regular numbers
-vim.opt.relativenumber = true -- for relative numbers
-vim.opt.scrolloff = 10 -- start scrolling when we are 30 lines away from the edge
+vim.g.maplocalleader = " "
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+vim.g.have_nerd_font = true
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.opt.rtp:prepend(lazypath)
+vim.opt.mouse = "a"
 
-local lazy_config = require "configs.lazy"
-
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "nvchad.autocmds"
+vim.opt.showmode = false
 
 vim.schedule(function()
-  require "mappings"
+  vim.opt.clipboard = 'unnamedplus'
 end)
 
--- vim.o.shell = "/opt/homebrew/bin/nu"
+vim.opt.breakindent = true
 
-local autocmd = vim.api.nvim_create_autocmd
+vim.opt.undofile = true
 
-autocmd("VimEnter", {
-  command = ":silent !kitty @ set-spacing padding=0 margin=0",
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.signcolumn = 'yes'
+
+vim.opt.updatetime = 250
+
+vim.opt.timeoutlen = 300
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.inccommand = 'split'
+
+vim.opt.cursorline = true
+
+vim.opt.scrolloff = 10
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
-autocmd("VimLeavePre", {
-  command = ":silent !kitty @ set-spacing padding=default margin=default",
-})
+require("config.lazy")
