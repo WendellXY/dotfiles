@@ -56,7 +56,7 @@ zle -N edit-command-line
 
 # Source external plugins
 source "$ZSHAREDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$ZDOTDIR/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"  # Load syntax highlighting
+source "$ZDOTDIR/themes/catppuccin_ansi-z-sy-h.zsh"  # Load syntax highlighting
 
 source "$ZSHAREDIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
