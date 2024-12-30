@@ -18,6 +18,7 @@
         bat # Better cat
         delta # Better git diff
         eza # Modern ls replacement
+				fastfetch # Fast system information
         fd # Better find
         fzf # Fuzzy finder
         gh # GitHub CLI

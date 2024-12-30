@@ -118,3 +118,9 @@ fi
 if type rbenv &>/dev/null; then
   eval "$(rbenv init -)"
 fi
+
+# -------------------------------
+# Initial Commands
+# -------------------------------
+source "$ZDOTDIR/initial.zsh"
+# -------------------------------
