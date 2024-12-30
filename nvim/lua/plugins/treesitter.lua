@@ -1,22 +1,31 @@
 return {
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
-				"bash",
-				"c",
+				"css",
 				"diff",
+				"gitignore",
 				"html",
-				"lua",
+				"json",
 				"luadoc",
 				"markdown",
 				"markdown_inline",
 				"query",
-				"vim",
+				"regex",
+				"toml",
 				"vimdoc",
+				"yaml",
+
+				"bash",
+				"c",
+				"lua",
+				"swift",
+				"vim",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
