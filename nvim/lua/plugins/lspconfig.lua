@@ -203,6 +203,20 @@ return {
 					end,
 				},
 			}
+
+			-- Some LSPs does not support by Mason yet, so we need to install them manually
+
+			local lspconfig = require "lspconfig"
+			local cmp_nvim_lsp = require "cmp_nvim_lsp"
+			local custom_servers = {
+				"sourcekit",
+			}
+
+			for _, lsp in ipairs(custom_servers) do
+				lspconfig[lsp].setup {
+					capabilities = capabilities,
+				}
+			end
 		end,
 	},
 }

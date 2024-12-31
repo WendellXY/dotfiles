@@ -7,6 +7,7 @@ return {
 			integrations = {
 				snacks = true,
 				noice = true,
+				which_key = true,
 			},
 		},
 	},
