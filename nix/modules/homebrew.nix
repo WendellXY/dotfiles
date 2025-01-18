@@ -14,6 +14,7 @@
       "zsh-autosuggestions-abbreviations-strategy"
     ];
     casks = [
+			"android-platform-tools"
       "arc"
       "iina"
       "imageoptim"
