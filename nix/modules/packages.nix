@@ -75,6 +75,7 @@
         ffmpeg
         ffmpegthumbnailer
         imagemagick # Image manipulation
+				pngquant # PNG image compression
       ];
 
       # Applications
