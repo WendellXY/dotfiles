@@ -120,6 +120,21 @@ if type rbenv &>/dev/null; then
 fi
 
 # -------------------------------
+# npm: Node Package Manager
+# -------------------------------
+if type npm &>/dev/null; then
+
+	# Check if npm prefix is not set to ~/.npm-global
+	if [ "$(npm config get prefix)" != "$HOME/.npm-global" ]; then
+		npm set prefix "$HOME/.npm-global"
+	fi
+
+	# Update PATH
+	export PATH="$HOME/.npm-global/bin:$PATH"
+
+fi
+
+# -------------------------------
 # Initial Commands
 # -------------------------------
 source "$ZDOTDIR/initial.zsh"
