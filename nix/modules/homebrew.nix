@@ -52,6 +52,7 @@
 			"Telegram" = 747648890;
 			"Numbers" = 409203825;
 			"Noir" = 1592917505;
+			"LocalSend" = 1661733229;
 		};
 		onActivation.cleanup = "zap";
 		onActivation.autoUpdate = true;
