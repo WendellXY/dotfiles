@@ -7,9 +7,7 @@
     let
       # Terminal Emulators
       terminals = [
-        alacritty
         iterm2
-        kitty
       ];
 
       # Shell and Terminal Utilities
