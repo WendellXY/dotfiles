@@ -41,8 +41,54 @@
             ./modules/system.nix
 
             ./modules/fonts.nix
-            ./modules/homebrew.nix
-            ./modules/packages.nix
+            ./modules/homebrew.base.nix
+            ./modules/packages.base.nix
+
+            nix-homebrew.darwinModules.nix-homebrew
+            home-manager.darwinModules.home-manager
+            ({ config, ... }: {
+              homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
+            })
+            ({ pkgs, ... } @ args: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.wendell = import ./users/wendell.nix args;
+              users.users.wendell.home = /Users/wendell;
+            })
+            ({ pkgs, ... }: {
+              nix.settings.trusted-users = [ "wendell" ];
+              services.nix-daemon.enable = true;
+
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.overlays = [
+								neovim-nightly-overlay.overlays.default
+                rust-overlay.overlays.default
+                batOverlay
+              ];
+            })
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                autoMigrate = true;
+                user = "wendell";
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+              };
+            }
+          ];
+        };
+        client = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./modules/system.nix
+
+            ./modules/fonts.nix
+            ./modules/homebrew.client.nix
+            ./modules/packages.client.nix
 
             nix-homebrew.darwinModules.nix-homebrew
             home-manager.darwinModules.home-manager

@@ -5,23 +5,15 @@
   environment.systemPackages =
     with pkgs;
     let
-      # Terminal Emulators
-      terminals = [
-        iterm2
-      ];
-
       # Shell and Terminal Utilities
       shellUtils = [
-        atuin # Shell history management
         bat # Better cat
         delta # Better git diff
         eza # Modern ls replacement
-				fastfetch # Fast system information
+        fastfetch # Fast system information
         fd # Better find
         fzf # Fuzzy finder
-        gh # GitHub CLI
         git # Version control
-        git-lfs # Git large file storage
         jq # JSON processor
         lazygit # Git client
         nix-prefetch-git # Script used to obtain source hashes for fetchgit
@@ -34,16 +26,14 @@
         zoxide # Smarter cd command
       ];
 
-      # Development Tools
+      # Minimal Development Tools
       devTools = [
         cmake # Build system
         cocoapods # iOS dependency manager
         meson # Build system
+        neovim # Text editor
         pipx # Python package installer
         fastlane # iOS deployment automation
-        neovim # Text editor
-        vscode
-        zed
       ];
 
       # Frameworks
@@ -52,7 +42,7 @@
         libyaml # YAML parser
       ];
 
-      # Programming Languages and Runtime
+      # Basic Programming Languages
       languages = [
         go
         lua
@@ -65,7 +55,6 @@
         ruby_3_3
         zig
         rustup # Rust toolchain installer
-        swiftlint # Swift linter
       ];
 
       # Media Tools
@@ -73,16 +62,6 @@
         ffmpeg
         ffmpegthumbnailer
         imagemagick # Image manipulation
-				pngquant # PNG image compression
-      ];
-
-      # Applications
-      applications = [
-        alt-tab-macos # Better app switcher
-        google-chrome # Web browser
-        ice-bar # macOS menu bar app
-        lmstudio # LLM Studio
-        obsidian # Note-taking app
       ];
 
       # Shell Customization
@@ -99,13 +78,11 @@
       ];
 
     in
-    terminals
-    ++ shellUtils
+    shellUtils
     ++ devTools
     ++ frameworks
     ++ languages
     ++ mediaTools
-    ++ applications
     ++ shellCustomization
     ++ zshPlugins;
 }
