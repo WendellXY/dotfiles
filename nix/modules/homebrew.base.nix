@@ -14,7 +14,6 @@
     ];
     casks = [
       "firefox"
-      "stats"
     ];
     taps = [
       "nikitabobko/tap"
