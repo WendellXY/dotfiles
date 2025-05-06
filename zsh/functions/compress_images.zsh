@@ -82,8 +82,3 @@ compress_images() {
   echo "Compression process completed."
   echo "Check the 'outputs' directory in '$target_dir' for compressed images."
 }
-
-# If this script is executed directly (not sourced), run the function
-if [[ "${BASH_SOURCE[0]}" == "${0}" || "${ZSH_EVAL_CONTEXT}" != *:file:* ]]; then
-  compress_images "$@"
-fi
