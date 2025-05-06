@@ -57,7 +57,6 @@
             })
             ({ pkgs, ... }: {
               nix.settings.trusted-users = [ "wendell" ];
-              services.nix-daemon.enable = true;
 
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
@@ -103,7 +102,6 @@
             })
             ({ pkgs, ... }: {
               nix.settings.trusted-users = [ "wendell" ];
-              services.nix-daemon.enable = true;
 
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
