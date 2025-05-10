@@ -7,14 +7,15 @@
     let
       # Shell and Terminal Utilities
       shellUtils = [
+        atuin # Shell history management
         bat # Better cat
         delta # Better git diff
         eza # Modern ls replacement
         fastfetch # Fast system information
         fd # Better find
         fzf # Fuzzy finder
+        gh # GitHub CLI
         git # Version control
-        jq # JSON processor
         lazygit # Git client
         nix-prefetch-git # Script used to obtain source hashes for fetchgit
         nix-prefetch-github # Script used to obtain source hashes for fetchFromGitHub

@@ -16,8 +16,7 @@ in
 
       # Additional Shell and Terminal Utilities
       shellUtils = [
-        atuin # Shell history management
-        gh # GitHub CLI
+        jq # JSON processor
         git-lfs # Git large file storage
       ];
 

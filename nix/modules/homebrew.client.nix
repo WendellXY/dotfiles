@@ -45,7 +45,6 @@ in
       "WeChat" = 836500024;
       "Wallpaper Play" = 1638457121;
       "Raycast Companion" = 6738274497;
-      "Microsoft Excel" = 462058435;
       "TestFlight" = 899247664;
       "Pages" = 409201541;
       "Telegram" = 747648890;
