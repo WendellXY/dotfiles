@@ -30,6 +30,15 @@ fi
 export PATH="$HOME/.gem/ruby/3.3.0/bin:$PATH"
 
 # -------------------------------
+# Zsh Autoload and Plugins
+# -------------------------------
+# Autoload functions and modules
+autoload -U compinit; compinit        # Initialize Zsh completion system
+zmodload zsh/complist                 # Enhanced completion features
+autoload -Uz edit-command-line        # Command line editor widget
+zle -N edit-command-line
+
+# -------------------------------
 # Zsh Functions
 # -------------------------------
 # Load custom Functions
@@ -44,15 +53,6 @@ fpath=("$HOME/.config/zsh/completions" $fpath)
 fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fpath=("$(brew --prefix)/share/zsh-abbr" $fpath)
-
-# -------------------------------
-# Zsh Autoload and Plugins
-# -------------------------------
-# Autoload functions and modules
-autoload -U compinit; compinit        # Initialize Zsh completion system
-zmodload zsh/complist                 # Enhanced completion features
-autoload -Uz edit-command-line        # Command line editor widget
-zle -N edit-command-line
 
 # Source external plugins
 source "$ZSHAREDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
