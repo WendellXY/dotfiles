@@ -24,6 +24,7 @@
         tldr # Simplified man pages
         tmux # Terminal multiplexer
         tree-sitter # Parser generator tool
+        vivid # Generator for LS_COLORS with support for multiple color themes
         yazi # File manager
         zoxide # Smarter cd command
       ];

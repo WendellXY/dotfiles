@@ -29,10 +29,12 @@ let
     (
       { pkgs, ... }@args:
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.${username} = import ./users/${username}.nix args;
         users.users.${username}.home = /Users/${username};
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${username} = import ./users/${username}.nix args;
+        };
       }
     )
 

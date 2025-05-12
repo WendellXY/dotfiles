@@ -1,1 +1,0 @@
-alias tree = eza --tree --icons

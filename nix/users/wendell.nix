@@ -7,10 +7,11 @@
 
 {
   home.stateVersion = "23.05";
-
   home.file.".zshenv".text = ''
     source $HOME/.config/zsh/.zshenv
   '';
+
+  xdg.enable = true;
 
   xdg.dataFile = with pkgs; {
     # Zsh plugins
@@ -22,5 +23,10 @@
     "zsh/fzf".source = "${fzf}/share/fzf";
   };
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    enableNushellIntegration = true;
+    enableZshIntegration = true;
+  };
+
 }

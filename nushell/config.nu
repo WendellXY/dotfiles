@@ -65,11 +65,6 @@ $env.config = {
         isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
 
-    filesize: {
-        metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
-    }
-
     cursor_shape: {
         emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
         vi_insert: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
@@ -744,5 +739,4 @@ source atuin.nu
 source prompt.nu
 source theme.nu
 source completions.nu
-source alias.nu
 source commands.nu
