@@ -18,12 +18,19 @@ return {
 					},
 				},
 			}
-			local mason_registry = require "mason-registry"
-			local codelldb = mason_registry.get_package "codelldb"
-			local extension_path = codelldb:get_install_path() .. "/extension/"
+			local extension_path = vim.fn.expand "$MASON/packages/codelldb/extension/"
 			local codelldb_path = extension_path .. "adapter/codelldb"
 			local xcodebuild_dap = require "xcodebuild.integrations.dap"
 			xcodebuild_dap.setup(codelldb_path)
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("xcodebuild-lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc, mode)
+						require("utils.keymap").set(keys, func, desc, mode, event)
+					end
+					map("<leader>vx", ":XcodebuildPicker<CR>", "Xcode Actions Picker")
+				end,
+			})
 		end,
 		cond = function()
 			local xcodeproj = vim.fn.glob "*.xcodeproj"

@@ -6,21 +6,21 @@ return {
 		enabled = true,
 		opts = {
 			panel = {
-				enabled = true,
-				auto_refresh = true,
+				enabled = false,
+				-- auto_refresh = true,
 			},
 			suggestion = {
-				enabled = true,
-				auto_trigger = true,
-				hide_during_completion = true,
-				keymap = {
-					accept = "<C-y>",
-					accept_word = false,
-					accept_line = false,
-					next = false,
-					prev = false,
-					dismiss = false,
-				},
+				enabled = false,
+				-- auto_trigger = true,
+				-- hide_during_completion = true,
+				-- keymap = {
+				-- 	accept = "<C-y>",
+				-- 	accept_word = false,
+				-- 	accept_line = false,
+				-- 	next = false,
+				-- 	prev = false,
+				-- 	dismiss = false,
+				-- },
 			},
 			filetypes = { ["*"] = true },
 		},
@@ -29,16 +29,22 @@ return {
 
 			-- hide copilot suggestions when cmp menu is open
 			-- to prevent odd behavior/garbled up suggestions
-			local cmp_status_ok, cmp = pcall(require, "cmp")
-			if cmp_status_ok then
-				cmp.event:on("menu_opened", function()
-					vim.b.copilot_suggestion_hidden = true
-				end)
-
-				cmp.event:on("menu_closed", function()
-					vim.b.copilot_suggestion_hidden = false
-				end)
-			end
+			-- local cmp_status_ok, cmp = pcall(require, "cmp")
+			-- if cmp_status_ok then
+			-- 	cmp.event:on("menu_opened", function()
+			-- 		vim.b.copilot_suggestion_hidden = true
+			-- 	end)
+			--
+			-- 	cmp.event:on("menu_closed", function()
+			-- 		vim.b.copilot_suggestion_hidden = false
+			-- 	end)
+			-- end
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
 		end,
 	},
 }

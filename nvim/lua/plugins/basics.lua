@@ -5,6 +5,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
+			preset = "modern",
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
@@ -44,15 +45,16 @@ return {
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>f", group = "[F]ocus" },
-				{ "<leader>j", group = "[J]ump" },
-				{ "<leader>r", group = "[R]ename" },
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>d", group = "Debug" },
+				{ "<leader>e", group = "Editor" },
+				{ "<leader>f", group = "File" },
+				{ "<leader>g", group = "Git", mode = { "n", "v" } },
+				{ "<leader>h", group = "Help" },
+				{ "<leader>n", group = "Navigate" },
+				{ "<leader>s", group = "Search" },
+				{ "<leader>t", group = "Terminal" },
+				{ "<leader>v", group = "View" },
+				{ "<leader>w", group = "Workspace" },
 			},
 		},
 	},
@@ -165,4 +167,5 @@ return {
 		---@type Flash.Config
 		opts = {},
 	},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 }

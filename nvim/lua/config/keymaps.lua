@@ -1,57 +1,69 @@
 -- Helper function for setting keymaps
-local function map(key, command, desc, mode)
-	mode = mode or "n"
-	vim.keymap.set(mode, key, command, { desc = desc })
-end
+local keymap = require "utils.keymap"
+
+keymap.del "grr"
+keymap.del "gri"
+keymap.del "gra"
+keymap.del "grn"
 
 -- File Management Keymaps
-map("<leader>tn", ":Neotree toggle<CR>", "[T]oggle [N]avigator")
-map("<leader>fn", "::Neotree focus<CR>", "[F]ocus [N]avigator")
+keymap.set("<leader>vtn", ":Neotree toggle<CR>", "Toggle Navigator")
+keymap.set("<leader>vfn", "::Neotree focus<CR>", "Focus Navigator")
+keymap.set("<leader>nt", ":Neotree toggle<CR>", "Navigator: Toggle")
+keymap.set("<leader>nf", "::Neotree focus<CR>", "Navigator: Focus")
+
+-- Terminal
+keymap.set("<leader>tt", ":ToggleTerm direction=tab<CR>", "New Terminal: Tab")
+keymap.set("<leader>tv", ":ToggleTerm direction=vertical<CR>", "New Terminal: Vertical")
+keymap.set("<leader>th", ":ToggleTerm direction=horizontal<CR>", "New Terminal: Horizontal")
+keymap.set("<leader>tf", ":ToggleTerm direction=float<CR>", "New Terminal: Float")
+keymap.set("<A-i>", ":ToggleTerm direction=float<CR>", "New Terminal: Float")
 
 -- Scratch Buffer
 local snacks = require "snacks"
-map("<A-s>", function()
+keymap.set("<leader>ws", function()
 	snacks.scratch()
 end, "Open [S]cratch Buffer")
 
-map("<A-S>", function()
+keymap.set("<leader>S", function()
 	snacks.scratch.select()
 end, "[S]elect [S]cratch Buffer")
 
 -- Flash
 local flash = require "flash"
-map("s", function()
+keymap.set("<A-s>", function()
 	flash.jump()
 end, "Flash", { "n", "x", "o" })
-map("S", function()
+keymap.set("<A-S>", function()
 	flash.treesitter()
 end, "Flash Treesitter", { "n", "x", "o" })
-map("r", function()
+keymap.set("r", function()
 	flash.remote()
 end, "Remote Flash", { "o" })
-map("R", function()
+keymap.set("R", function()
 	flash.treesitter_search()
 end, "Treesitter Search", { "o", "x" })
-map("<c-s>", function()
+keymap.set("<c-s>", function()
 	flash.toggle()
 end, "Toggle Flash Search", { "c" })
 
 -- Telescope
 -- See `:help telescope.builtin`
 local builtin = require "telescope.builtin"
-map("<leader>sh", builtin.help_tags, "[S]earch [H]elp")
-map("<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
-map("<leader>sf", builtin.find_files, "[S]earch [F]iles")
-map("<leader>ss", builtin.builtin, "[S]earch [S]elect Telescope")
-map("<leader>sw", builtin.grep_string, "[S]earch current [W]ord")
-map("<leader>sg", builtin.live_grep, "[S]earch by [G]rep")
-map("<leader>sd", builtin.diagnostics, "[S]earch [D]iagnostics")
-map("<leader>sr", builtin.resume, "[S]earch [R]esume")
-map("<leader>s.", builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
-map("<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
+keymap.set("<leader>ds", builtin.diagnostics, "Search Diagnostics")
+keymap.set("<leader>fs", builtin.find_files, "Open File")
+keymap.set("<leader>f.", builtin.oldfiles, "Open Recent")
+keymap.set("<leader>hs", builtin.help_tags, "Search Help")
+keymap.set("<leader>hk", builtin.keymaps, "keymaps Help")
+keymap.set("<leader>ht", builtin.builtin, "Telescope Help")
+keymap.set("<leader>sf", builtin.find_files, "Search [F]ile")
+keymap.set("<leader>sw", builtin.grep_string, "Search current [W]ord")
+keymap.set("<leader>sg", builtin.live_grep, "Search by [G]rep")
+keymap.set("<leader>sr", builtin.resume, "Search [R]esume")
+keymap.set("<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
 
 -- Slightly advanced example of overriding default behavior and theme
-map("<leader>/", function()
+keymap.set("<leader>/", function()
 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
 		winblend = 10,
@@ -61,14 +73,14 @@ end, "[/] Fuzzily search in current buffer")
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
-map("<leader>s/", function()
+keymap.set("<leader>s/", function()
 	builtin.live_grep {
 		grep_open_files = true,
 		prompt_title = "Live Grep in Open Files",
 	}
-end, "[S]earch [/] in Open Files")
+end, "Search in Open Files")
 
 -- Shortcut for searching your Neovim configuration files
-map("<leader>sn", function()
+keymap.set("<leader>sn", function()
 	builtin.find_files { cwd = vim.fn.stdpath "config" }
-end, "[S]earch [N]eovim files")
+end, "Search [N]eovim files")
