@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-	security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.stateVersion = 5;
 

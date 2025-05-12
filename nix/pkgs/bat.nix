@@ -1,13 +1,13 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, less
-, installShellFiles
-, makeWrapper
-, zlib
-,
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  less,
+  installShellFiles,
+  makeWrapper,
+  zlib,
 }:
 
 rustPlatform.buildRustPackage rec {

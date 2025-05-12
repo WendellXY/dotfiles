@@ -27,7 +27,7 @@ in
       "ollama"
       "playcover-community"
       "sf-symbols"
-			"stats"
+      "stats"
     ];
 
     # Additional taps for development tools
@@ -53,4 +53,3 @@ in
     };
   };
 }
-

@@ -19,6 +19,7 @@
         lazygit # Git client
         nix-prefetch-git # Script used to obtain source hashes for fetchgit
         nix-prefetch-github # Script used to obtain source hashes for fetchFromGitHub
+        nushell # Shell replacement
         ripgrep # Better grep
         tldr # Simplified man pages
         tmux # Terminal multiplexer
@@ -79,11 +80,5 @@
       ];
 
     in
-    shellUtils
-    ++ devTools
-    ++ frameworks
-    ++ languages
-    ++ mediaTools
-    ++ shellCustomization
-    ++ zshPlugins;
+    shellUtils ++ devTools ++ frameworks ++ languages ++ mediaTools ++ shellCustomization ++ zshPlugins;
 }
