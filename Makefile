@@ -63,6 +63,13 @@ starship: | ${HOME}/.config/starship
 ${HOME}/.config/starship: ${HOME}/.config
 	ln -s ${BASE_DIR}/starship ${HOME}/.config/starship
 
+# MARK: starship
+atuin: | ${HOME}/.config/atuin
+	@echo "Atuin configuration installed"
+
+${HOME}/.config/atuin:: ${HOME}/.config
+	ln -s ${BASE_DIR}/atuin ${HOME}/.config/atuin
+
 # MARK: alacritty
 alacritty: | ${HOME}/.config/alacritty
 	@echo "Alacritty configuration installed"
