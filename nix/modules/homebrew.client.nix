@@ -18,9 +18,6 @@ in
       "iina"
       "imageoptim"
       "figma"
-      "aerospace"
-      "wezterm"
-      "gitbutler"
       "github"
       "github-copilot-for-xcode"
       # "ghostty"
@@ -43,7 +40,6 @@ in
       "Developer" = 640199958;
       "Keynote" = 409183694;
       "WeChat" = 836500024;
-      "Wallpaper Play" = 1638457121;
       "Raycast Companion" = 6738274497;
       "TestFlight" = 899247664;
       "Pages" = 409201541;

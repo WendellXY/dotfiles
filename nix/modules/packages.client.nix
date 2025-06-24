@@ -12,7 +12,7 @@ in
       let
         # Terminal Emulators
         terminals = [
-          iterm2
+          # iterm2
         ];
 
         # Additional Shell and Terminal Utilities
