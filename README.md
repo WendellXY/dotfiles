@@ -1,4 +1,4 @@
-# My Configurations
+# Configurations
 
 Welcome to my dotfiles repository, a curated collection of configuration files tailored for macOS environments. These configurations streamline the setup of various development tools, ensuring a seamless and productive workspace. Leveraging a Makefile, this project simplifies the process of applying configurations by automatically creating the necessary symlinks for each tool.
 
