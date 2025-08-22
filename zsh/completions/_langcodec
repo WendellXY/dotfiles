@@ -1,0 +1,222 @@
+#compdef langcodec
+
+autoload -U is-at-least
+
+_langcodec() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_langcodec_commands" \
+"*::: :->langcodec-cli" \
+&& ret=0
+    case $state in
+    (langcodec-cli)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:langcodec-command-$line[1]:"
+        case $line[1] in
+            (convert)
+_arguments "${_arguments_options[@]}" : \
+'-i+[The input file to process]:INPUT:_default' \
+'--input=[The input file to process]:INPUT:_default' \
+'-o+[The output file to write the results to]:OUTPUT:_default' \
+'--output=[The output file to write the results to]:OUTPUT:_default' \
+'--input-format=[Optional input format hint (e.g., "json-language-map", "json-array-language-map", "yaml-language-map", "strings", "android")]:INPUT_FORMAT:_default' \
+'--output-format=[Optional output format hint (e.g., "xcstrings", "strings", "android")]:OUTPUT_FORMAT:_default' \
+'*--exclude-lang=[Language codes to exclude from output (e.g., "en", "fr"). Can be specified multiple times or as comma-separated values (e.g., "--exclude-lang en,fr,zh-hans"). Only affects .langcodec output format]:LANG:_default' \
+'*--include-lang=[Language codes to include in output (e.g., "en", "fr"). Can be specified multiple times or as comma-separated values (e.g., "--include-lang en,fr,zh-hans"). If specified, only these languages will be included. Only affects .langcodec output format]:LANG:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(view)
+_arguments "${_arguments_options[@]}" : \
+'-i+[The input file to view]:INPUT:_default' \
+'--input=[The input file to view]:INPUT:_default' \
+'-l+[Optional language code to filter entries by]:LANG:_default' \
+'--lang=[Optional language code to filter entries by]:LANG:_default' \
+'--full[Display full value without truncation (even in terminal)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(merge)
+_arguments "${_arguments_options[@]}" : \
+'*-i+[The input files to merge (supports multiple formats\: .strings, .xml, .csv, .tsv, .xcstrings, .json, .yaml)]:INPUTS:_default' \
+'*--inputs=[The input files to merge (supports multiple formats\: .strings, .xml, .csv, .tsv, .xcstrings, .json, .yaml)]:INPUTS:_default' \
+'-o+[The output file path (format automatically determined from extension)]:OUTPUT:_default' \
+'--output=[The output file path (format automatically determined from extension)]:OUTPUT:_default' \
+'-s+[Strategy for handling conflicts when merging entries with the same key]:STRATEGY:((first\:"Keep the first occurrence of a key"
+last\:"Keep the last occurrence of a key (default)"
+skip\:"Skip conflicting entries"))' \
+'--strategy=[Strategy for handling conflicts when merging entries with the same key]:STRATEGY:((first\:"Keep the first occurrence of a key"
+last\:"Keep the last occurrence of a key (default)"
+skip\:"Skip conflicting entries"))' \
+'-l+[Language code to use for all input files (e.g., "en", "fr")]:LANG:_default' \
+'--lang=[Language code to use for all input files (e.g., "en", "fr")]:LANG:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(debug)
+_arguments "${_arguments_options[@]}" : \
+'-i+[The input file to debug]:INPUT:_default' \
+'--input=[The input file to debug]:INPUT:_default' \
+'-l+[Language code to use (e.g., "en", "fr")]:LANG:_default' \
+'--lang=[Language code to use (e.g., "en", "fr")]:LANG:_default' \
+'-o+[Output file (defaults to stdout)]:OUTPUT:_default' \
+'--output=[Output file (defaults to stdout)]:OUTPUT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':shell -- Shell to generate completions for (bash, zsh, fish, powershell, elvish):(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_langcodec__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:langcodec-help-command-$line[1]:"
+        case $line[1] in
+            (convert)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(view)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(merge)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(debug)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_langcodec_commands] )) ||
+_langcodec_commands() {
+    local commands; commands=(
+'convert:Convert localization files between formats' \
+'view:View localization files' \
+'merge:Merge multiple localization files into one output file with automatic format detection and conversion' \
+'debug:Debug\: Read a localization file and output as JSON' \
+'completions:Generate shell completion script and print to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'langcodec commands' commands "$@"
+}
+(( $+functions[_langcodec__completions_commands] )) ||
+_langcodec__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec completions commands' commands "$@"
+}
+(( $+functions[_langcodec__convert_commands] )) ||
+_langcodec__convert_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec convert commands' commands "$@"
+}
+(( $+functions[_langcodec__debug_commands] )) ||
+_langcodec__debug_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec debug commands' commands "$@"
+}
+(( $+functions[_langcodec__help_commands] )) ||
+_langcodec__help_commands() {
+    local commands; commands=(
+'convert:Convert localization files between formats' \
+'view:View localization files' \
+'merge:Merge multiple localization files into one output file with automatic format detection and conversion' \
+'debug:Debug\: Read a localization file and output as JSON' \
+'completions:Generate shell completion script and print to stdout' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'langcodec help commands' commands "$@"
+}
+(( $+functions[_langcodec__help__completions_commands] )) ||
+_langcodec__help__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help completions commands' commands "$@"
+}
+(( $+functions[_langcodec__help__convert_commands] )) ||
+_langcodec__help__convert_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help convert commands' commands "$@"
+}
+(( $+functions[_langcodec__help__debug_commands] )) ||
+_langcodec__help__debug_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help debug commands' commands "$@"
+}
+(( $+functions[_langcodec__help__help_commands] )) ||
+_langcodec__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help help commands' commands "$@"
+}
+(( $+functions[_langcodec__help__merge_commands] )) ||
+_langcodec__help__merge_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help merge commands' commands "$@"
+}
+(( $+functions[_langcodec__help__view_commands] )) ||
+_langcodec__help__view_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help view commands' commands "$@"
+}
+(( $+functions[_langcodec__merge_commands] )) ||
+_langcodec__merge_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec merge commands' commands "$@"
+}
+(( $+functions[_langcodec__view_commands] )) ||
+_langcodec__view_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec view commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_langcodec" ]; then
+    _langcodec "$@"
+else
+    compdef _langcodec langcodec
+fi
