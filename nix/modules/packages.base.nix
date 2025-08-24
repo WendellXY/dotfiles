@@ -36,6 +36,7 @@
         meson # Build system
         neovim # Text editor
         pipx # Python package installer
+        pnpm # Package manager for JS/TS
         fastlane # iOS deployment automation
       ];
 
