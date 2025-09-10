@@ -35,10 +35,10 @@ in
 
     # Work and development related apps
     masApps = baseHomebrew.homebrew.masApps // {
-      "Xcode" = 497799835;
-      "Twitter" = 1482454543;
-      "Developer" = 640199958;
-      "Keynote" = 409183694;
+      # "Xcode" = 497799835;
+      # "Twitter" = 1482454543;
+      # "Developer" = 640199958;
+      # "Keynote" = 409183694;
       "WeChat" = 836500024;
       "Raycast Companion" = 6738274497;
       "TestFlight" = 899247664;
