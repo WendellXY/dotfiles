@@ -2,7 +2,7 @@
 
 {
   security.pam.services.sudo_local.touchIdAuth = true;
-
+	system.primaryUser = "wendell";
   system.stateVersion = 5;
 
   system.defaults = {
@@ -18,7 +18,7 @@
       autohide = true;
       showhidden = true;
       persistent-apps = [
-        "/Applications/Nix Apps/Google Chrome.app"
+        "/Applications/Safari.app"
         "/System/Applications/Messages.app"
         "/System/Applications/Mail.app"
         "/System/Applications/Music.app"
