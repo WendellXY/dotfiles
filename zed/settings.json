@@ -1,10 +1,10 @@
 {
+  "icon_theme": "Catppuccin Frappé",
   "agent": {
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-5-sonnet-20240620"
     },
-    "version": "2"
   },
   "autosave": "on_focus_change",
   "cursor_shape": "bar",
@@ -46,7 +46,7 @@
   "theme": {
     "mode": "system",
     "light": "Custom Catppuccin Latte",
-    "dark": "Custom Catppuccin Mocha"
+    "dark": "Catppuccin Frappé"
   },
   "relative_line_numbers": true
 }
