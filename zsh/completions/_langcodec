@@ -36,11 +36,75 @@ _arguments "${_arguments_options[@]}" : \
 '--output=[The output file to write the results to]:OUTPUT:_default' \
 '--input-format=[Optional input format hint (e.g., "json-language-map", "json-array-language-map", "yaml-language-map", "strings", "android")]:INPUT_FORMAT:_default' \
 '--output-format=[Optional output format hint (e.g., "xcstrings", "strings", "android")]:OUTPUT_FORMAT:_default' \
+'--source-language=[For xcstrings output\: override source language (default\: en)]:SOURCE_LANGUAGE:_default' \
+'--version=[For xcstrings output\: override version (default\: 1.0)]:VERSION:_default' \
 '*--exclude-lang=[Language codes to exclude from output (e.g., "en", "fr"). Can be specified multiple times or as comma-separated values (e.g., "--exclude-lang en,fr,zh-hans"). Only affects .langcodec output format]:LANG:_default' \
 '*--include-lang=[Language codes to include in output (e.g., "en", "fr"). Can be specified multiple times or as comma-separated values (e.g., "--include-lang en,fr,zh-hans"). If specified, only these languages will be included. Only affects .langcodec output format]:LANG:_default' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
+;;
+(edit)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_langcodec__edit_commands" \
+"*::: :->edit" \
+&& ret=0
+
+    case $state in
+    (edit)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:langcodec-edit-command-$line[1]:"
+        case $line[1] in
+            (set)
+_arguments "${_arguments_options[@]}" : \
+'*-i+[Input files. Supports glob patterns. Quote patterns to avoid slow shell-side expansion (e.g., '\''/path/**/*/Localizable.strings'\'').]:INPUTS:_default' \
+'*--inputs=[Input files. Supports glob patterns. Quote patterns to avoid slow shell-side expansion (e.g., '\''/path/**/*/Localizable.strings'\'').]:INPUTS:_default' \
+'-l+[Language code (required for single-language formats when multiple resources present)]:LANG:_default' \
+'--lang=[Language code (required for single-language formats when multiple resources present)]:LANG:_default' \
+'-k+[Entry key to set]:KEY:_default' \
+'--key=[Entry key to set]:KEY:_default' \
+'-v+[New value. If omitted or empty, the entry will be removed]:VALUE:_default' \
+'--value=[New value. If omitted or empty, the entry will be removed]:VALUE:_default' \
+'--comment=[Optional translator comment]:COMMENT:_default' \
+'--status=[Optional status\: translated|needs_review|new|do_not_translate|stale]:STATUS:_default' \
+'-o+[Optional output file; if omitted, writes in-place to input]:OUTPUT:_default' \
+'--output=[Optional output file; if omitted, writes in-place to input]:OUTPUT:_default' \
+'--dry-run[Preview changes without writing]' \
+'--continue-on-error[Continue processing remaining files when a file fails]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_langcodec__edit__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:langcodec-edit-help-command-$line[1]:"
+        case $line[1] in
+            (set)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
 ;;
 (view)
 _arguments "${_arguments_options[@]}" : \
@@ -49,14 +113,15 @@ _arguments "${_arguments_options[@]}" : \
 '-l+[Optional language code to filter entries by]:LANG:_default' \
 '--lang=[Optional language code to filter entries by]:LANG:_default' \
 '--full[Display full value without truncation (even in terminal)]' \
+'--check-plurals[Validate plural completeness against CLDR category sets]' \
 '-h[Print help]' \
 '--help[Print help]' \
 && ret=0
 ;;
 (merge)
 _arguments "${_arguments_options[@]}" : \
-'*-i+[The input files to merge (supports multiple formats\: .strings, .xml, .csv, .tsv, .xcstrings, .json, .yaml)]:INPUTS:_default' \
-'*--inputs=[The input files to merge (supports multiple formats\: .strings, .xml, .csv, .tsv, .xcstrings, .json, .yaml)]:INPUTS:_default' \
+'*-i+[Input files. Supports glob patterns. Quote patterns to avoid slow shell-side expansion (e.g., '\''/path/**/*/strings.xml'\'').]:INPUTS:_default' \
+'*--inputs=[Input files. Supports glob patterns. Quote patterns to avoid slow shell-side expansion (e.g., '\''/path/**/*/strings.xml'\'').]:INPUTS:_default' \
 '-o+[The output file path (format automatically determined from extension)]:OUTPUT:_default' \
 '--output=[The output file path (format automatically determined from extension)]:OUTPUT:_default' \
 '-s+[Strategy for handling conflicts when merging entries with the same key]:STRATEGY:((first\:"Keep the first occurrence of a key"
@@ -67,8 +132,21 @@ last\:"Keep the last occurrence of a key (default)"
 skip\:"Skip conflicting entries"))' \
 '-l+[Language code to use for all input files (e.g., "en", "fr")]:LANG:_default' \
 '--lang=[Language code to use for all input files (e.g., "en", "fr")]:LANG:_default' \
+'--source-language=[For xcstrings output\: override source language (default\: en)]:SOURCE_LANGUAGE:_default' \
+'--version=[For xcstrings output\: override version (default\: 1.0)]:VERSION:_default' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(stats)
+_arguments "${_arguments_options[@]}" : \
+'-i+[The input file to analyze]:INPUT:_default' \
+'--input=[The input file to analyze]:INPUT:_default' \
+'-l+[Optional language code to filter by]:LANG:_default' \
+'--lang=[Optional language code to filter by]:LANG:_default' \
+'--json[Output JSON instead of human-readable text]' \
+'-h[Print help]' \
+'--help[Print help]' \
 && ret=0
 ;;
 (debug)
@@ -106,11 +184,35 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
+(edit)
+_arguments "${_arguments_options[@]}" : \
+":: :_langcodec__help__edit_commands" \
+"*::: :->edit" \
+&& ret=0
+
+    case $state in
+    (edit)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:langcodec-help-edit-command-$line[1]:"
+        case $line[1] in
+            (set)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
 (view)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
 (merge)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stats)
 _arguments "${_arguments_options[@]}" : \
 && ret=0
 ;;
@@ -139,8 +241,10 @@ esac
 _langcodec_commands() {
     local commands; commands=(
 'convert:Convert localization files between formats' \
+'edit:Edit localization files in-place' \
 'view:View localization files' \
 'merge:Merge multiple localization files into one output file with automatic format detection and conversion' \
+'stats:Show translation coverage and per-status counts' \
 'debug:Debug\: Read a localization file and output as JSON' \
 'completions:Generate shell completion script and print to stdout' \
 'help:Print this message or the help of the given subcommand(s)' \
@@ -162,12 +266,45 @@ _langcodec__debug_commands() {
     local commands; commands=()
     _describe -t commands 'langcodec debug commands' commands "$@"
 }
+(( $+functions[_langcodec__edit_commands] )) ||
+_langcodec__edit_commands() {
+    local commands; commands=(
+'set:Set a key'\''s value (add/update/remove unified)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'langcodec edit commands' commands "$@"
+}
+(( $+functions[_langcodec__edit__help_commands] )) ||
+_langcodec__edit__help_commands() {
+    local commands; commands=(
+'set:Set a key'\''s value (add/update/remove unified)' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'langcodec edit help commands' commands "$@"
+}
+(( $+functions[_langcodec__edit__help__help_commands] )) ||
+_langcodec__edit__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec edit help help commands' commands "$@"
+}
+(( $+functions[_langcodec__edit__help__set_commands] )) ||
+_langcodec__edit__help__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec edit help set commands' commands "$@"
+}
+(( $+functions[_langcodec__edit__set_commands] )) ||
+_langcodec__edit__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec edit set commands' commands "$@"
+}
 (( $+functions[_langcodec__help_commands] )) ||
 _langcodec__help_commands() {
     local commands; commands=(
 'convert:Convert localization files between formats' \
+'edit:Edit localization files in-place' \
 'view:View localization files' \
 'merge:Merge multiple localization files into one output file with automatic format detection and conversion' \
+'stats:Show translation coverage and per-status counts' \
 'debug:Debug\: Read a localization file and output as JSON' \
 'completions:Generate shell completion script and print to stdout' \
 'help:Print this message or the help of the given subcommand(s)' \
@@ -189,6 +326,18 @@ _langcodec__help__debug_commands() {
     local commands; commands=()
     _describe -t commands 'langcodec help debug commands' commands "$@"
 }
+(( $+functions[_langcodec__help__edit_commands] )) ||
+_langcodec__help__edit_commands() {
+    local commands; commands=(
+'set:Set a key'\''s value (add/update/remove unified)' \
+    )
+    _describe -t commands 'langcodec help edit commands' commands "$@"
+}
+(( $+functions[_langcodec__help__edit__set_commands] )) ||
+_langcodec__help__edit__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help edit set commands' commands "$@"
+}
 (( $+functions[_langcodec__help__help_commands] )) ||
 _langcodec__help__help_commands() {
     local commands; commands=()
@@ -199,6 +348,11 @@ _langcodec__help__merge_commands() {
     local commands; commands=()
     _describe -t commands 'langcodec help merge commands' commands "$@"
 }
+(( $+functions[_langcodec__help__stats_commands] )) ||
+_langcodec__help__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec help stats commands' commands "$@"
+}
 (( $+functions[_langcodec__help__view_commands] )) ||
 _langcodec__help__view_commands() {
     local commands; commands=()
@@ -208,6 +362,11 @@ _langcodec__help__view_commands() {
 _langcodec__merge_commands() {
     local commands; commands=()
     _describe -t commands 'langcodec merge commands' commands "$@"
+}
+(( $+functions[_langcodec__stats_commands] )) ||
+_langcodec__stats_commands() {
+    local commands; commands=()
+    _describe -t commands 'langcodec stats commands' commands "$@"
 }
 (( $+functions[_langcodec__view_commands] )) ||
 _langcodec__view_commands() {
