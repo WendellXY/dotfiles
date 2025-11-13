@@ -15,12 +15,12 @@ in
     casks = baseHomebrew.homebrew.casks ++ [
       "android-platform-tools"
       "arc"
+			"codex"
       "iina"
       "imageoptim"
       "figma"
       "github"
       "github-copilot-for-xcode"
-      # "ghostty"
       "ollama"
       "playcover-community"
       "sf-symbols"
@@ -45,7 +45,7 @@ in
       "Pages" = 409201541;
       "Telegram" = 747648890;
       "Numbers" = 409203825;
-      "Noir" = 1592917505;
+      # "Noir" = 1592917505;
     };
   };
 }

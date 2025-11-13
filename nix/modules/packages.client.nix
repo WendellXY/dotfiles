@@ -25,6 +25,7 @@ in
         devTools = [
           vscode
           zed
+					claude-code
         ];
 
         # Programming Languages and Runtime
