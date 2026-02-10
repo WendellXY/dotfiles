@@ -53,7 +53,6 @@
         luajit
         nil # nix language server
         nixfmt-rfc-style
-        nixpkgs-fmt # Nix code formatter
         nodejs
         python3
         ruby_3_3

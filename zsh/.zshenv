@@ -20,7 +20,6 @@ export SAVEHIST=10000              # Maximum number of commands in the history f
 # Set the default editor
 export EDITOR="nvim"               # Default editor for CLI tools
 export VISUAL="nvim"               # Default editor for visually interactive tools
-tabs -2                            # Set default tab size to 2
 
 # -------------------------------
 # Key and Search Settings

@@ -13,18 +13,22 @@ in
 
     # Additional applications for daily work
     casks = baseHomebrew.homebrew.casks ++ [
+      "alt-tab"
       "android-platform-tools"
       "arc"
 			"codex"
       "iina"
       "imageoptim"
       "figma"
+      "google-chrome"
       "github"
       "github-copilot-for-xcode"
+      "obsidian"
       "ollama"
       "playcover-community"
       "sf-symbols"
       "stats"
+      "visual-studio-code"
     ];
 
     # Additional taps for development tools

@@ -32,7 +32,7 @@ let
         users.users.${username}.home = /Users/${username};
         home-manager = {
           useGlobalPkgs = true;
-          useUserPackages = true;
+          useUserPackages = false;
           users.${username} = import ./users/${username}.nix args;
         };
       }

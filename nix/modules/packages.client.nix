@@ -23,7 +23,6 @@ in
 
         # Development Tools
         devTools = [
-          vscode
           zed
 					claude-code
         ];
@@ -40,10 +39,7 @@ in
 
         # Applications
         applications = [
-          alt-tab-macos # Better app switcher
-          google-chrome # Web browser
           ice-bar # macOS menu bar app
-          obsidian # Note-taking app
         ];
 
       in

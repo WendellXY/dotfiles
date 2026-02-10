@@ -137,5 +137,9 @@ fi
 # -------------------------------
 # Initial Commands
 # -------------------------------
+if [[ -t 1 ]] && type tabs &>/dev/null; then
+  tabs -2 &>/dev/null
+fi
+
 source "$ZDOTDIR/initial.zsh"
 # -------------------------------
