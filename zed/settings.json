@@ -1,5 +1,6 @@
 {
-  "icon_theme": "Catppuccin Frappé",
+  "buffer_line_height": "comfortable",
+  "icon_theme": "Catppuccin Latte",
   "agent": {
     "default_model": {
       "provider": "zed.dev",
@@ -9,9 +10,9 @@
   "autosave": "on_focus_change",
   "cursor_shape": "bar",
   "vim_mode": true,
-  "ui_font_family": "MonaspiceXe Nerd Font",
+  "ui_font_family": "SF Mono",
   "ui_font_size": 13,
-  "buffer_font_family": "Monaspace Argon",
+  "buffer_font_family": "Maple Mono NF CN",
   "buffer_font_features": {
     "calt": true,
     "liga": true
@@ -43,10 +44,6 @@
     },
     "working_directory": "current_project_directory"
   },
-  "theme": {
-    "mode": "system",
-    "light": "Custom Catppuccin Latte",
-    "dark": "Catppuccin Frappé"
-  },
-  "relative_line_numbers": true
+  "theme": "Catppuccin Latte",
+  "relative_line_numbers": "enabled"
 }
