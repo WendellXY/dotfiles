@@ -24,7 +24,7 @@ in
       "github"
       "github-copilot-for-xcode"
       "obsidian"
-      "ollama"
+      "ollama-app"
       "playcover-community"
       "sf-symbols"
       "stats"

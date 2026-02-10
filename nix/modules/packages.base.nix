@@ -52,7 +52,7 @@
         lua
         luajit
         nil # nix language server
-        nixfmt-rfc-style
+        nixfmt
         nodejs
         python3
         ruby_3_3
