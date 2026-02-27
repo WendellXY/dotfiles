@@ -2,7 +2,7 @@
 
 {
   security.pam.services.sudo_local.touchIdAuth = true;
-	system.primaryUser = "wendell";
+  system.primaryUser = "wendell";
   system.stateVersion = 5;
 
   system.defaults = {

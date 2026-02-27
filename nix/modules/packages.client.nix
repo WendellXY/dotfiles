@@ -24,7 +24,6 @@ in
         # Development Tools
         devTools = [
           zed
-					claude-code
         ];
 
         # Programming Languages and Runtime

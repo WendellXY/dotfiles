@@ -5,6 +5,7 @@ let
 in
 {
   homebrew = baseHomebrew.homebrew // {
+
     # Development tools for your daily work
     brews = baseHomebrew.homebrew.brews ++ [
       "sourcery"
@@ -13,21 +14,17 @@ in
 
     # Additional applications for daily work
     casks = baseHomebrew.homebrew.casks ++ [
-      "alt-tab"
       "android-platform-tools"
-      "arc"
-			"codex"
+      "codex"
       "iina"
       "imageoptim"
       "figma"
       "google-chrome"
       "github"
-      "github-copilot-for-xcode"
       "obsidian"
       "ollama-app"
       "playcover-community"
       "sf-symbols"
-      "stats"
       "visual-studio-code"
     ];
 
