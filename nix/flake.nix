@@ -30,6 +30,7 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust.url = "github:oxalica/rust-overlay";
+    opencode.url = "github:anomalyco/opencode";
   };
 
   outputs =
@@ -48,6 +49,7 @@
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         inputs.rust.overlays.default
+        inputs.opencode.overlays.default
         (final: prev: {
           bat = final.callPackage ./pkgs/bat.nix { };
         })

@@ -23,6 +23,7 @@ in
 
         # Development Tools
         devTools = [
+          opencode
           zed
         ];
 

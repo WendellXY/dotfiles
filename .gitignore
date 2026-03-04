@@ -13,3 +13,5 @@ zsh/.zcompdump
 zsh/.zcompcache
 
 tmux/plugins/
+
+.vscode

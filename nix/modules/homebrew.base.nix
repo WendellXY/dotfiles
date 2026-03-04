@@ -13,8 +13,7 @@
       "zsh-autosuggestions-abbreviations-strategy"
     ];
     casks = [
-      "firefox"
-      "claude-code"
+      "google-chrome"
     ];
     taps = [
       "nikitabobko/tap"

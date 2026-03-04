@@ -15,11 +15,11 @@ in
     # Additional applications for daily work
     casks = baseHomebrew.homebrew.casks ++ [
       "android-platform-tools"
+      "claude-code"
       "codex"
       "iina"
       "imageoptim"
       "figma"
-      "google-chrome"
       "github"
       "obsidian"
       "ollama-app"
