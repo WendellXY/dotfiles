@@ -143,3 +143,6 @@ fi
 
 source "$ZDOTDIR/initial.zsh"
 # -------------------------------
+
+# bun completions
+[ -s "/Users/wendell/.bun/_bun" ] && source "/Users/wendell/.bun/_bun"
