@@ -37,6 +37,7 @@ autoload -U compinit; compinit        # Initialize Zsh completion system
 zmodload zsh/complist                 # Enhanced completion features
 autoload -Uz edit-command-line        # Command line editor widget
 zle -N edit-command-line
+[[ -n "$SSH_CONNECTION" ]] && unset zle_bracketed_paste
 
 # -------------------------------
 # Zsh Functions
