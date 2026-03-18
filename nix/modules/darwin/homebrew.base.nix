@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   homebrew = {
@@ -22,7 +22,6 @@
     masApps = {
       "LocalSend" = 1661733229;
     };
-    # Upgrade casks even if they are self-updating or unversioned.
     greedyCasks = true;
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
