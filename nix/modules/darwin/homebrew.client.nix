@@ -6,6 +6,7 @@ in
 {
   homebrew = baseHomebrew.homebrew // {
     brews = baseHomebrew.homebrew.brews ++ [
+      "lima"
       "sourcery"
       "xcode-build-server"
     ];
