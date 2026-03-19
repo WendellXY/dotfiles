@@ -45,7 +45,6 @@
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
         inputs.rust.overlays.default
-        inputs.opencode.overlays.default
         (final: prev: {
           bat = final.callPackage ./pkgs/bat.nix { };
         })
