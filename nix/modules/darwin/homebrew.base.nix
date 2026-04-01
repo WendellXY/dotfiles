@@ -23,6 +23,10 @@
       "LocalSend" = 1661733229;
     };
     greedyCasks = true;
+    # Keep manual `brew install` / `brew upgrade` behavior aligned with activation.
+    global.autoUpdate = true;
+    # These keep installed formulae and casks current once the pinned Homebrew
+    # inputs in flake.lock have been refreshed.
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;

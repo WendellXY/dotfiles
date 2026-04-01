@@ -3,13 +3,18 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nix nvim nushell nushell-linux fish zsh starship atuin alacritty wezterm kitty warp ghostty zed bat yazi sketchybar aerospace yabai tmux
+.PHONY: install brew nix nix-update-homebrew nvim nushell nushell-linux fish zsh starship atuin alacritty wezterm kitty warp ghostty zed bat yazi sketchybar aerospace yabai tmux
 
 install: brew nvim fish zsh starship atuin tmux bat yazi kitty wezterm ghostty zed aerospace
 
 # MARK: nix
 nix: | ${HOME}/.config/nix
 	@echo "NeoVim configuration installed"
+
+nix-update-homebrew:
+	nix flake update nix-homebrew homebrew-core homebrew-cask homebrew-bundle --flake ./nix
+	@echo "Updated Homebrew-related flake inputs in nix/flake.lock"
+	@echo "Run your usual darwin rebuild next to apply the newer Homebrew pins"
 
 ${HOME}/.config/nix: ${HOME}/.config
 	ln -sfn ${BASE_DIR}/nix ${HOME}/.config/nix

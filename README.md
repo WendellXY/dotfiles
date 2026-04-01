@@ -15,3 +15,15 @@ If you prefer to configure only specific tools or applications, you can do so by
 ```sh
 make <component>
 ```
+
+## Nix Homebrew Updates
+
+This repo pins Homebrew itself and its declarative taps through `nix/flake.lock`, so `darwin-rebuild` only sees newer Homebrew formula/cask definitions after those inputs are refreshed.
+
+To update the Homebrew-related flake inputs, run:
+
+```sh
+make nix-update-homebrew
+```
+
+Then run your usual `darwin-rebuild switch --flake ./nix#<config>` command to apply the newer pins.
