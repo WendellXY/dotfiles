@@ -13,8 +13,8 @@ in
 
     casks = baseHomebrew.homebrew.casks ++ [
       "android-platform-tools"
-      "claude-code"
-      "codex"
+      # "claude-code" # Use shell script to install to catch the latest version: `curl -fsSL https://claude.ai/install.sh | bash`
+      # "codex" # Install using npm: `npm install -g @openai/codex`
       "iina"
       "imageoptim"
       "figma"
