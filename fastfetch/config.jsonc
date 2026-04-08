@@ -11,10 +11,7 @@
       "type": "packages",
       "disabled": [
         "brew",
-        "brew-cask",
-        "nix-system",
-        "nix-user",
-        "nix-default"
+        "nix"
       ]
     },
     "shell",
