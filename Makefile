@@ -3,9 +3,9 @@ BASE_DIR   :=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 ${HOME}/.config:
 	mkdir -p ${HOME}/.config
 
-.PHONY: install brew nix nix-update-homebrew nvim nushell nushell-linux fish zsh starship atuin alacritty wezterm kitty warp ghostty zed bat yazi sketchybar aerospace yabai tmux
+.PHONY: install brew nix nix-update-homebrew nvim nushell nushell-linux fish zsh fastfetch starship atuin alacritty wezterm kitty warp ghostty zed bat yazi sketchybar aerospace yabai tmux
 
-install: brew nvim fish zsh starship atuin tmux bat yazi kitty wezterm ghostty zed aerospace
+install: brew nvim fish zsh fastfetch starship atuin tmux bat yazi kitty wezterm ghostty zed aerospace
 
 # MARK: nix
 nix: | ${HOME}/.config/nix
@@ -60,6 +60,13 @@ ${HOME}/.zshenv:
 
 ${HOME}/.config/zsh:
 	ln -sfn ${BASE_DIR}/zsh ${HOME}/.config/zsh
+
+# MARK: fastfetch
+fastfetch: | ${HOME}/.config/fastfetch
+	@echo "Fastfetch configuration installed"
+
+${HOME}/.config/fastfetch: ${HOME}/.config
+	ln -sfn ${BASE_DIR}/fastfetch ${HOME}/.config/fastfetch
 
 # MARK: starship
 starship: | ${HOME}/.config/starship
