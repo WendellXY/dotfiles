@@ -23,12 +23,11 @@
       "LocalSend" = 1661733229;
     };
     greedyCasks = true;
-    # Keep manual `brew install` / `brew upgrade` behavior aligned with activation.
+    # Keep manual `brew install` / `brew upgrade` behavior available outside rebuilds.
     global.autoUpdate = true;
-    # These keep installed formulae and casks current once the pinned Homebrew
-    # inputs in flake.lock have been refreshed.
-    onActivation.cleanup = "zap";
-    onActivation.autoUpdate = true;
-    onActivation.upgrade = true;
+    # Leave Homebrew state in the user's control during darwin-rebuild.
+    onActivation.cleanup = "none";
+    onActivation.autoUpdate = false;
+    onActivation.upgrade = false;
   };
 }

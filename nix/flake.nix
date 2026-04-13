@@ -14,20 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust.url = "github:oxalica/rust-overlay";
     opencode.url = "github:anomalyco/opencode";
@@ -64,10 +50,6 @@
         inherit inputs username;
       };
 
-      darwinNixHomebrewModule = import ./modules/darwin/nix-homebrew.nix {
-        inherit inputs username;
-      };
-
       nixosHomeManagerModule = import ./modules/nixos/home-manager.nix {
         inherit inputs username;
       };
@@ -81,7 +63,6 @@
           commonNixModule
           commonFontsModule
           darwinHomeManagerModule
-          darwinNixHomebrewModule
           ./modules/darwin/system.nix
           ./modules/darwin/homebrew.base.nix
           ./modules/common/packages.base.nix
@@ -93,7 +74,6 @@
           commonNixModule
           commonFontsModule
           darwinHomeManagerModule
-          darwinNixHomebrewModule
           ./modules/darwin/system.nix
           ./modules/darwin/homebrew.client.nix
           ./modules/common/packages.client.nix

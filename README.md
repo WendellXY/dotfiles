@@ -16,14 +16,6 @@ If you prefer to configure only specific tools or applications, you can do so by
 make <component>
 ```
 
-## Nix Homebrew Updates
+## Homebrew
 
-This repo pins Homebrew itself and its declarative taps through `nix/flake.lock`, so `darwin-rebuild` only sees newer Homebrew formula/cask definitions after those inputs are refreshed.
-
-To update the Homebrew-related flake inputs, run:
-
-```sh
-make nix-update-homebrew
-```
-
-Then run your usual `darwin-rebuild switch --flake ./nix#<config>` command to apply the newer pins.
+On macOS, this repo uses nix-darwin's `homebrew.*` options to declare formulae, casks, taps, and Mac App Store apps. Homebrew itself is managed separately from Nix, so you can continue using normal `brew update` and `brew upgrade --cask ...` workflows outside `darwin-rebuild`.
