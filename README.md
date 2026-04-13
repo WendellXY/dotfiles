@@ -19,3 +19,8 @@ make <component>
 ## Homebrew
 
 On macOS, this repo uses nix-darwin's `homebrew.*` options to declare formulae, casks, taps, and Mac App Store apps. Homebrew itself is managed separately from Nix, so you can continue using normal `brew update` and `brew upgrade --cask ...` workflows outside `darwin-rebuild`.
+
+Manual `brew bundle` commands use the Brewfile generated from these declarations automatically, so the source of truth stays in:
+
+- `nix/modules/darwin/homebrew.base.nix`
+- `nix/modules/darwin/homebrew.client.nix`

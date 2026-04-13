@@ -25,6 +25,9 @@
     greedyCasks = true;
     # Keep manual `brew install` / `brew upgrade` behavior available outside rebuilds.
     global.autoUpdate = true;
+    # Make manual `brew bundle` use the Brewfile generated from this repo's
+    # nix-darwin homebrew declarations instead of a separate checked-in file.
+    global.brewfile = true;
     # Leave Homebrew state in the user's control during darwin-rebuild.
     onActivation.cleanup = "none";
     onActivation.autoUpdate = false;
