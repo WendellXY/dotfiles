@@ -8,4 +8,5 @@ background-blur-radius = 30
 
 macos-option-as-alt = left
 mouse-hide-while-typing = true
-cursor-style = block
+cursor-style = bar
+shell-integration-features=no-cursor
