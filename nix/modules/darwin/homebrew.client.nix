@@ -20,7 +20,7 @@ in
       "figma"
       "github"
       "obsidian"
-      "ollama-app"
+      # "ollama-app"
       "playcover-community"
       "sf-symbols"
       "visual-studio-code"

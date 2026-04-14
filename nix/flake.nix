@@ -15,7 +15,7 @@
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    rust.url = "github:oxalica/rust-overlay";
+    zig.url = "github:mitchellh/zig-overlay";
     opencode.url = "github:anomalyco/opencode";
   };
 
@@ -30,8 +30,9 @@
 
       overlays = [
         inputs.neovim-nightly-overlay.overlays.default
-        inputs.rust.overlays.default
+        inputs.zig.overlays.default
         (final: prev: {
+          zig = final.zigpkgs.master;
           bat = final.callPackage ./pkgs/bat.nix { };
         })
       ];
