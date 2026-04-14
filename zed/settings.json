@@ -1,10 +1,17 @@
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "buffer_line_height": "comfortable",
-  "icon_theme": "Catppuccin Latte",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
   "agent": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-5-sonnet-20240620",
     },
   },
   "autosave": "on_focus_change",
@@ -15,14 +22,14 @@
   "buffer_font_family": "Maple Mono NF CN",
   "buffer_font_features": {
     "calt": true,
-    "liga": true
+    "liga": true,
   },
   "buffer_font_size": 13,
   "format_on_save": "on",
   "tabs": {
     "close_position": "left",
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "terminal": {
     "blinking": "terminal_controlled",
@@ -31,19 +38,20 @@
     "detect_venv": {
       "on": {
         "directories": [".venv", "venv", "env", ".env"],
-        "activate_script": "default"
-      }
+        "activate_script": "default",
+      },
     },
     "dock": "bottom",
     "font_family": "MonaspiceXe Nerd Font",
     "shell": {
-      "program": "/opt/homebrew/bin/fish"
+      "program": "/opt/homebrew/bin/fish",
     },
-    "toolbar": {
-      "title": true
-    },
-    "working_directory": "current_project_directory"
+    "working_directory": "current_project_directory",
   },
-  "theme": "Catppuccin Latte",
-  "relative_line_numbers": "enabled"
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
+  "relative_line_numbers": "enabled",
 }

@@ -16,7 +16,6 @@ in
 
         devTools = [
           opencode
-          zed
         ];
 
         languages = [
