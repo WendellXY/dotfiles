@@ -1,9 +1,17 @@
 {
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "project_panel": {
-    "hide_root": true
+    "hide_root": true,
   },
   "collaboration_panel": {
-    "button": false
+    "button": false,
   },
   "session": {
     "trust_all_worktrees": true,
@@ -29,7 +37,7 @@
       "effort": "high",
       "enable_thinking": true,
       "provider": "anthropic",
-      "model": "claude-sonnet-4-6-latest",
+      "model": "claude-opus-4-6-latest",
     },
   },
   "autosave": "on_focus_change",
@@ -37,7 +45,7 @@
   "vim_mode": true,
   "ui_font_family": "SF Mono",
   "ui_font_size": 13,
-  "buffer_font_family": "Maple Mono NF CN",
+  "buffer_font_family": "Maple Mono NF",
   "buffer_font_features": {
     "calt": true,
     "liga": true,
@@ -60,7 +68,7 @@
       },
     },
     "dock": "bottom",
-    "font_family": "MonaspiceXe Nerd Font",
+    "font_family": "Maple Mono NF",
     "shell": {
       "program": "/run/current-system/sw/bin/zsh",
     },

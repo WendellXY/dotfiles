@@ -110,7 +110,7 @@ fi
 # Atuin: Shell History Manager
 # -------------------------------
 if type atuin &>/dev/null; then
-  eval "$(atuin init zsh)"
+  eval "$(atuin init zsh --disable-ctrl-r)"
 fi
 
 # -------------------------------
