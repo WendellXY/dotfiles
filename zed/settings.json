@@ -1,6 +1,15 @@
 {
+  "project_panel": {
+    "hide_root": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
   "edit_predictions": {
-    "provider": "copilot"
+    "provider": "copilot",
   },
   "buffer_line_height": "comfortable",
   "icon_theme": {
@@ -9,9 +18,18 @@
     "dark": "Catppuccin Mocha",
   },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow",
+        },
+      },
+    },
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620",
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6-latest",
     },
   },
   "autosave": "on_focus_change",
@@ -44,7 +62,7 @@
     "dock": "bottom",
     "font_family": "MonaspiceXe Nerd Font",
     "shell": {
-      "program": "/opt/homebrew/bin/fish",
+      "program": "/run/current-system/sw/bin/zsh",
     },
     "working_directory": "current_project_directory",
   },
