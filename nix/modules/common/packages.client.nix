@@ -15,6 +15,7 @@ in
         ];
 
         devTools = [
+          nixd
           opencode
         ];
 
