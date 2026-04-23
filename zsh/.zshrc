@@ -92,6 +92,13 @@ if type fzf &>/dev/null; then
 fi
 
 # -------------------------------
+# direnv: Project Environment Loader
+# -------------------------------
+if type direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# -------------------------------
 # Starship Prompt
 # -------------------------------
 if type starship &>/dev/null; then

@@ -1,4 +1,14 @@
 {
+  "cli_default_open_behavior": "existing_window",
+  "which_key": {
+    "enabled": true
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "agent_servers": {
     "codex-acp": {
       "type": "registry"
@@ -8,9 +18,11 @@
     }
   },
   "project_panel": {
+    "dock": "left",
     "hide_root": true,
   },
   "collaboration_panel": {
+    "dock": "right",
     "button": false,
   },
   "session": {
@@ -26,6 +38,8 @@
     "dark": "Catppuccin Mocha",
   },
   "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
     "tool_permissions": {
       "tools": {
         "terminal": {
