@@ -10,6 +10,7 @@ in
       with pkgs;
       let
         shellUtils = [
+          direnv
           jq
           git-lfs
         ];

@@ -17,7 +17,6 @@
         lazygit
         nix-prefetch-git
         nix-prefetch-github
-        nushell
         ripgrep
         tldr
         tmux

@@ -14,7 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zig.url = "github:mitchellh/zig-overlay";
     opencode.url = "github:anomalyco/opencode";
   };
@@ -29,7 +28,6 @@
       username = "wendell";
 
       overlays = [
-        inputs.neovim-nightly-overlay.overlays.default
         inputs.zig.overlays.default
         (final: prev: {
           zig = final.zigpkgs.master;
