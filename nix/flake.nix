@@ -31,6 +31,7 @@
         inputs.zig.overlays.default
         (final: prev: {
           zig = final.zigpkgs.master;
+          opencode = inputs.opencode.packages.${prev.stdenv.hostPlatform.system}.default;
           bat = final.callPackage ./pkgs/bat.nix { };
         })
       ];
