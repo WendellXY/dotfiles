@@ -48,10 +48,10 @@
       },
     },
     "default_model": {
-      "effort": "high",
+      "effort": "xhigh",
       "enable_thinking": true,
-      "provider": "anthropic",
-      "model": "claude-opus-4-6-latest",
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
     },
   },
   "autosave": "on_focus_change",

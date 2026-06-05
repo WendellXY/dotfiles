@@ -18,6 +18,8 @@ source "$ZDOTDIR/cursor_mode.zsh"   # Load cursor mode settings
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 if [[ "$(uname -sm)" == "Darwin arm64" ]]; then
   # Homebrew
@@ -153,4 +155,4 @@ source "$ZDOTDIR/initial.zsh"
 # -------------------------------
 
 # bun completions
-[ -s "/Users/wendell/.bun/_bun" ] && source "/Users/wendell/.bun/_bun"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
