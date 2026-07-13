@@ -31,7 +31,35 @@
         inputs.zig.overlays.default
         (final: prev: {
           zig = final.zigpkgs.master;
-          opencode = inputs.opencode.packages.${prev.stdenv.hostPlatform.system}.default;
+          opencode =
+            (inputs.opencode.packages.${prev.stdenv.hostPlatform.system}.default).overrideAttrs
+              (oldAttrs: {
+                nativeBuildInputs =
+                  (oldAttrs.nativeBuildInputs or [ ])
+                  ++ final.lib.optionals final.stdenv.hostPlatform.isDarwin [
+                    final.darwin.autoSignDarwinBinariesHook
+                  ];
+
+                postPatch =
+                  (oldAttrs.postPatch or "")
+                  + final.lib.optionalString final.stdenv.hostPlatform.isDarwin ''
+                    # Bun's compiled binary is not validly signed until the Darwin
+                    # fixup hook runs. Keep the later versionCheckHook as the runtime
+                    # smoke test after autoSignDarwinBinariesHook has re-signed it.
+                    substituteInPlace packages/opencode/script/build.ts \
+                      --replace-fail \
+                        'if (item.os === process.platform && item.arch === process.arch && !item.abi) {' \
+                        'if (false && item.os === process.platform && item.arch === process.arch && !item.abi) {'
+                  '';
+
+                postInstall =
+                  final.lib.optionalString final.stdenv.hostPlatform.isDarwin ''
+                    # Completion generation executes the wrapped binary before the
+                    # normal fixup phase, so it also needs a valid signature here.
+                    signIfRequired "$out/bin/.opencode-wrapped"
+                  ''
+                  + (oldAttrs.postInstall or "");
+              });
           bat = final.callPackage ./pkgs/bat.nix { };
         })
       ];
